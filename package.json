@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "files": "dist",
+  "files": ["dist"],
   "typings": "dist/index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
