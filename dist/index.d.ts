@@ -1,2 +1,2 @@
-import { MyComponent } from './Spinner';
-export { MyComponent };
+import { CenteredSpinner } from "./Spinner";
+export { CenteredSpinner };

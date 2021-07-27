@@ -1,9 +1,9 @@
-import './App.css';
-import { MyComponent } from './component-lib/index'
-
+import "./App.css";
+import { CenteredSpinner } from "./component-lib/index";
+import "bootstrap/dist/css/bootstrap.css";
 function App() {
   return (
-    <MyComponent></MyComponent>
+    <CenteredSpinner loading={true} size="md" loadingText="Authenticating..." />
   );
 }
 
