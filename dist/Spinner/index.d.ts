@@ -1,7 +1,12 @@
-import React from 'react';
-interface MyComponentProps {
-    text: string;
-    color?: string;
+import * as React from "react";
+interface IBaseSpinner {
+    loading: boolean;
+    loadingText?: string;
 }
-declare const MyComponent: React.FC<MyComponentProps>;
-export { MyComponentProps, MyComponent };
+interface ICenteredSpinner extends IBaseSpinner {
+    size: "lg" | "md" | "sm" | "xs" | "btn";
+    justifyLeft?: boolean;
+}
+export declare const CenteredSpinner: React.FC<ICenteredSpinner>;
+export declare const ButtonSpinner: React.FC<IBaseSpinner>;
+export {};
