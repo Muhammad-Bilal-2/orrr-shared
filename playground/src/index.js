@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { IsPhoneProvider } from "./component-lib/index";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <IsPhoneProvider>
+      <App />
+    </IsPhoneProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

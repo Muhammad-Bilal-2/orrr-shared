@@ -1,6 +1,7 @@
 /* eslint-disable */
 import classNames from 'classnames';
 import * as React from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import { Spinner } from 'react-bootstrap';
 
 var big = "20rem";
@@ -33,4 +34,41 @@ var CenteredSpinner = function (props) {
     return React.createElement(React.Fragment, null, props.loading ? getSpinner() : props.children);
 };
 
-export { CenteredSpinner };
+var MediaQuery = {
+    phone: "(min-width: 320px) and (max-width: 568px)",
+    tablet: "(min-width : 768px) and (max-width : 1024px)",
+    desktop: "(min-width : 1224px)",
+};
+
+var useMediaQuery = function (query) {
+    var queryToMatch = MediaQuery[query] || query;
+    var _a = useState(window.matchMedia(queryToMatch).matches), matches = _a[0], setMatches = _a[1];
+    useEffect(function () {
+        if (typeof window !== "object")
+            return;
+        if (!window.matchMedia)
+            return;
+        var media = window.matchMedia(queryToMatch);
+        if (media.matches !== matches)
+            setMatches(media.matches);
+        var listener = function () { return setMatches(media.matches); };
+        media.addEventListener
+            ? media.addEventListener("change", listener)
+            : media.addListener(listener);
+        return function () {
+            return media.removeEventListener
+                ? media.removeEventListener("change", listener)
+                : media.removeListener(listener);
+        };
+    }, [matches, queryToMatch]);
+    return matches;
+};
+
+var IsPhoneContext = createContext(false);
+var useIsPhoneContext = function () { return useContext(IsPhoneContext); };
+var IsPhoneProvider = function (props) {
+    var isPhone = useMediaQuery(MediaQuery.phone);
+    return (React.createElement(IsPhoneContext.Provider, { value: isPhone }, props.children));
+};
+
+export { CenteredSpinner, IsPhoneProvider, useIsPhoneContext };
