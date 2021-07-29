@@ -1,7 +1,7 @@
-import { CenteredSpinner } from "./Spinner";
+import { CenteredSpinner, ButtonSpinner } from "./Spinner";
 import {
   IsPhoneProvider,
   useIsPhoneContext,
 } from "./isPhoneContext/isPhoneContext";
 
-export { CenteredSpinner, IsPhoneProvider, useIsPhoneContext };
+export { CenteredSpinner, IsPhoneProvider, useIsPhoneContext, ButtonSpinner };

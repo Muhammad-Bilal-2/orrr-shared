@@ -33,6 +33,16 @@ var CenteredSpinner = function (props) {
     };
     return React.createElement(React.Fragment, null, props.loading ? getSpinner() : props.children);
 };
+var ButtonSpinner = function (props) {
+    var getSpinner = function () {
+        return (React.createElement("div", { className: getSpinnerClassNames(true) },
+            React.createElement(Spinner, { animation: "border", role: "status", variant: "primary", style: getStyle("btn") }),
+            React.createElement("span", null,
+                " ",
+                props.loadingText || "Loading...")));
+    };
+    return React.createElement(React.Fragment, null, props.loading ? getSpinner() : props.children);
+};
 
 var MediaQuery = {
     phone: "(min-width: 320px) and (max-width: 568px)",
@@ -71,4 +81,4 @@ var IsPhoneProvider = function (props) {
     return (React.createElement(IsPhoneContext.Provider, { value: isPhone }, props.children));
 };
 
-export { CenteredSpinner, IsPhoneProvider, useIsPhoneContext };
+export { ButtonSpinner, CenteredSpinner, IsPhoneProvider, useIsPhoneContext };
