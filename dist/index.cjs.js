@@ -108,6 +108,21 @@ var IsPhoneProvider = function (props) {
     return (React__namespace.createElement(IsPhoneContext.Provider, { value: isPhone }, props.children));
 };
 
+var ModalOverlay = function (props) {
+    return (React__namespace.createElement(React__namespace.Fragment, null,
+        React__namespace.createElement(reactBootstrap.Modal, { className: "modal-card-overlay", onHide: props.setShow, show: props.show, centered: true },
+            React__namespace.createElement(reactBootstrap.Modal.Header, { closeButton: true, onHide: props.setShow }, props.header),
+            React__namespace.createElement(reactBootstrap.Modal.Body, null, props.children),
+            React__namespace.createElement(reactBootstrap.Modal.Footer, null))));
+};
+
+var NativeOverlay = function (props) {
+    return (React__namespace.createElement(React__namespace.Fragment, null,
+        React__namespace.createElement(reactBootstrap.Modal, { className: "modal-overlay", show: props.show, backdrop: "static" },
+            React__namespace.createElement(reactBootstrap.Modal.Header, { closeButton: true, onHide: function () { return props.setShow(); } }, props.header),
+            React__namespace.createElement(reactBootstrap.Modal.Body, null, props.children))));
+};
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -166,4 +181,6 @@ exports.AlertWrapped = AlertWrapped;
 exports.ButtonSpinner = ButtonSpinner;
 exports.CenteredSpinner = CenteredSpinner;
 exports.IsPhoneProvider = IsPhoneProvider;
+exports.ModalOverlay = ModalOverlay;
+exports.NativeOverlay = NativeOverlay;
 exports.useIsPhoneContext = useIsPhoneContext;

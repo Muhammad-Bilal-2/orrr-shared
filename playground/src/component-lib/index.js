@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import { useState, useEffect, createContext, useContext } from 'react';
-import { Spinner, Card, Row, Col } from 'react-bootstrap';
+import { Spinner, Modal, Card, Row, Col } from 'react-bootstrap';
 
 var big = "20rem";
 var med = "10rem";
@@ -81,6 +81,21 @@ var IsPhoneProvider = function (props) {
     return (React.createElement(IsPhoneContext.Provider, { value: isPhone }, props.children));
 };
 
+var ModalOverlay = function (props) {
+    return (React.createElement(React.Fragment, null,
+        React.createElement(Modal, { className: "modal-card-overlay", onHide: props.setShow, show: props.show, centered: true },
+            React.createElement(Modal.Header, { closeButton: true, onHide: props.setShow }, props.header),
+            React.createElement(Modal.Body, null, props.children),
+            React.createElement(Modal.Footer, null))));
+};
+
+var NativeOverlay = function (props) {
+    return (React.createElement(React.Fragment, null,
+        React.createElement(Modal, { className: "modal-overlay", show: props.show, backdrop: "static" },
+            React.createElement(Modal.Header, { closeButton: true, onHide: function () { return props.setShow(); } }, props.header),
+            React.createElement(Modal.Body, null, props.children))));
+};
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -135,4 +150,4 @@ var AlertWrapped = function (props) {
             React.createElement(AlertCard, __assign({}, AlertCardProps)))));
 };
 
-export { AlertWrapped, ButtonSpinner, CenteredSpinner, IsPhoneProvider, useIsPhoneContext };
+export { AlertWrapped, ButtonSpinner, CenteredSpinner, IsPhoneProvider, ModalOverlay, NativeOverlay, useIsPhoneContext };
