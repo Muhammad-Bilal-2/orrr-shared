@@ -1496,9 +1496,9 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@orr/shared-style@git+https://bashref1710@bitbucket.org/combineddev/orr-global-styles.git#master":
+"@orr/shared-style@git+https://ksosnikova@bitbucket.org/combineddev/orr-global-styles.git#master":
   version "1.0.0"
-  resolved "git+https://bashref1710@bitbucket.org/combineddev/orr-global-styles.git#b6ae95b071d70b6ddf0b0a7c9b980f1008e78590"
+  resolved "git+https://ksosnikova@bitbucket.org/combineddev/orr-global-styles.git#87426aed41808809097357c6aaf77063af53c56a"
 
 "@pmmmwh/react-refresh-webpack-plugin@0.4.3":
   version "0.4.3"
