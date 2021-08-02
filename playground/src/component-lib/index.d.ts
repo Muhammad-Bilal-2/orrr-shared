@@ -3,4 +3,7 @@ import { IsPhoneProvider, useIsPhoneContext } from "./isPhoneContext/isPhoneCont
 import { ModalOverlay } from "./Overlays/ModalOverlay";
 import { NativeOverlay } from "./Overlays/NativeOverlay";
 import { AlertWrapped } from "./Alerts/AlertWrapped";
-export { CenteredSpinner, IsPhoneProvider, useIsPhoneContext, ButtonSpinner, AlertWrapped, ModalOverlay, NativeOverlay, };
+import { getApolloClient } from "./utilities/apollo.client";
+import { NumberBoolToText, StringToShortDate, StringOrDefault, NumberOrDefault } from "./utilities/TextExtensions";
+import { notEmpty, isNotNull, GetToday, groupBy, extract, OrderBy, checkValuesData, nameOf, getUniqueBy } from "./utilities/utilities";
+export { CenteredSpinner, IsPhoneProvider, useIsPhoneContext, ButtonSpinner, AlertWrapped, ModalOverlay, NativeOverlay, getApolloClient, NumberBoolToText, StringToShortDate, StringOrDefault, NumberOrDefault, notEmpty, isNotNull, GetToday, groupBy, extract, OrderBy, checkValuesData, nameOf, getUniqueBy, };
