@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import { useState, useEffect, createContext, useContext } from 'react';
-import { Spinner } from 'react-bootstrap';
+import { Spinner, Modal, Card, Row, Col } from 'react-bootstrap';
 
 var big = "20rem";
 var med = "10rem";
@@ -80,4 +80,73 @@ var IsPhoneProvider = function (props) {
     return (React.createElement(IsPhoneContext.Provider, { value: isPhone }, props.children));
 };
 
-export { ButtonSpinner, CenteredSpinner, IsPhoneProvider, useIsPhoneContext };
+var ModalOverlay = function (props) {
+    return (React.createElement(React.Fragment, null,
+        React.createElement(Modal, { className: "modal-card-overlay", onHide: props.setShow, show: props.show, centered: true },
+            React.createElement(Modal.Header, { closeButton: true, onHide: props.setShow }, props.header),
+            React.createElement(Modal.Body, null, props.children),
+            React.createElement(Modal.Footer, null))));
+};
+
+var NativeOverlay = function (props) {
+    return (React.createElement(React.Fragment, null,
+        React.createElement(Modal, { className: "modal-overlay", show: props.show, backdrop: "static" },
+            React.createElement(Modal.Header, { closeButton: true, onHide: function () { return props.setShow(); } }, props.header),
+            React.createElement(Modal.Body, null, props.children))));
+};
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+var AlertCard = function (_a) {
+    var header = _a.header, title = _a.title, text = _a.text, bgStyle = _a.bgStyle, textColor = _a.textColor;
+    return (React.createElement(Card, { bg: bgStyle, text: textColor },
+        React.createElement(Card.Header, null, header),
+        React.createElement(Card.Body, null,
+            title && React.createElement(Card.Title, null, title),
+            React.createElement(Card.Text, null, text))));
+};
+
+var AlertWrapped = function (props) {
+    var AlertCardProps = __rest(props, []);
+    return (React.createElement(Row, { className: "justify-content-md-center" },
+        React.createElement(Col, { md: 6 },
+            React.createElement(AlertCard, __assign({}, AlertCardProps)))));
+};
+
+export { AlertWrapped, ButtonSpinner, CenteredSpinner, IsPhoneProvider, ModalOverlay, NativeOverlay, useIsPhoneContext };
