@@ -1,7 +1,7 @@
 /* eslint-disable */
 import classNames from 'classnames';
 import * as React from 'react';
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect, createContext, useContext, useRef } from 'react';
 import { Spinner, Modal, Card, Row, Col } from 'react-bootstrap';
 import { createHttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -200,6 +200,14 @@ var NumberOrDefault = function (value) {
     return value || 0;
 };
 
+var useOnce = function (callback) {
+    var hasRendered = useRef(false);
+    if (!hasRendered.current) {
+        hasRendered.current = true;
+        callback();
+    }
+};
+
 function notEmpty(value) {
     return value !== null && value !== undefined;
 }
@@ -270,4 +278,4 @@ function getUniqueBy(arr, prop) {
     return arr.filter(function (o) { return !set.has(o[prop]) && set.add(o[prop]); });
 }
 
-export { AlertWrapped, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, ModalOverlay, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, StringOrDefault, StringToShortDate, checkValuesData, extract, getApolloClient, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext };
+export { AlertWrapped, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, ModalOverlay, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, StringOrDefault, StringToShortDate, checkValuesData, extract, getApolloClient, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };

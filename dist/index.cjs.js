@@ -227,6 +227,14 @@ var NumberOrDefault = function (value) {
     return value || 0;
 };
 
+var useOnce = function (callback) {
+    var hasRendered = React.useRef(false);
+    if (!hasRendered.current) {
+        hasRendered.current = true;
+        callback();
+    }
+};
+
 function notEmpty(value) {
     return value !== null && value !== undefined;
 }
@@ -318,3 +326,4 @@ exports.isNotNull = isNotNull;
 exports.nameOf = nameOf;
 exports.notEmpty = notEmpty;
 exports.useIsPhoneContext = useIsPhoneContext;
+exports.useOnce = useOnce;

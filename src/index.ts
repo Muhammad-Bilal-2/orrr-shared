@@ -48,4 +48,5 @@ export {
   checkValuesData,
   nameOf,
   getUniqueBy,
+  useOnce,
 };
