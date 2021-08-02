@@ -8,7 +8,7 @@ import "@orr/shared-style";
 // import "@orr/shared-style/src/index";
 
 function App() {
-  // const isphone = useIsPhoneContext();
+  const isphone = useIsPhoneContext();
 
   return (
     <>

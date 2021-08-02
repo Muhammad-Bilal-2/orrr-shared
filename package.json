@@ -23,6 +23,7 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
+    "@apollo/client": "^3.3.7",
     "classnames": "^2.2.6",
     "react": "^17.0.1",
     "react-bootstrap": "^1.6.1",
@@ -45,6 +46,9 @@
     "formik": "^2.2.9",
     "node-sass": "^6.0.1",
     "react-bootstrap": "^1.6.1",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "@apollo/client": "^3.3.7",
+    "graphql": "^15.5.1",
+    "react-scripts": "^4.0.3"
   }
 }

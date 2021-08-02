@@ -14,8 +14,8 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faGreaterThan } from "@fortawesome/free-solid-svg-icons";
-import { CenteredSpinner } from "../../index";
 import { ILogin } from "./Login";
+import { CenteredSpinner } from "../../Spinner";
 
 interface ILoginForm extends ILogin {
   setShowModal: React.Dispatch<React.SetStateAction<string>>;
