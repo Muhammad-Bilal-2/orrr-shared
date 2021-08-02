@@ -5,6 +5,10 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var classNames = require('classnames');
 var React = require('react');
 var reactBootstrap = require('react-bootstrap');
+var yup = require('yup');
+var formik = require('formik');
+var reactFontawesome = require('@fortawesome/react-fontawesome');
+var freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -30,6 +34,7 @@ function _interopNamespace(e) {
 
 var classNames__default = /*#__PURE__*/_interopDefaultLegacy(classNames);
 var React__namespace = /*#__PURE__*/_interopNamespace(React);
+var yup__namespace = /*#__PURE__*/_interopNamespace(yup);
 
 var big = "20rem";
 var med = "10rem";
@@ -161,6 +166,44 @@ function __rest(s, e) {
     return t;
 }
 
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
 var AlertCard = function (_a) {
     var header = _a.header, title = _a.title, text = _a.text, bgStyle = _a.bgStyle, textColor = _a.textColor;
     return (React__namespace.createElement(reactBootstrap.Card, { bg: bgStyle, text: textColor },
@@ -177,10 +220,116 @@ var AlertWrapped = function (props) {
             React__namespace.createElement(AlertCard, __assign({}, AlertCardProps)))));
 };
 
+var LoginForm = function (props) {
+    var _a = React.useState(false), passwordVisible = _a[0], setPasswordVisible = _a[1];
+    var schema = yup__namespace.object().shape({
+        username: yup__namespace.string().trim().required("Username is required"),
+        password: yup__namespace.string().trim().required("Password is required"),
+    });
+    var handleSubmit = function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/];
+        });
+    }); };
+    var formik$1 = formik.useFormik({
+        initialValues: {
+            username: "",
+            password: "",
+        },
+        validationSchema: schema,
+        onSubmit: handleSubmit,
+        enableReinitialize: true,
+    });
+    var togglePassword = function () {
+        setPasswordVisible(!passwordVisible);
+    };
+    return (React__namespace.createElement(React__namespace.Fragment, null, props.loading ? (React__namespace.createElement(CenteredSpinner, { loading: true, size: "md", loadingText: "Authenticating..." })) : (React__namespace.createElement(reactBootstrap.Form, { as: reactBootstrap.Col, xs: 10, sm: 8, md: 6, lg: 7, onKeyDown: function (e) {
+            if (e.key === "Enter") {
+                formik$1.handleSubmit();
+            }
+        } },
+        React__namespace.createElement(reactBootstrap.Card, { className: "card-login-form card-white" },
+            React__namespace.createElement(reactBootstrap.Card.Header, null,
+                React__namespace.createElement(reactBootstrap.Card.Title, { className: "login-heading" }, "Welcome")),
+            React__namespace.createElement(reactBootstrap.Card.Body, null,
+                React__namespace.createElement(reactBootstrap.Form.Group, { className: "mb-3", controlId: "validationCustom01" },
+                    React__namespace.createElement(reactBootstrap.FormControl, { name: "username", isInvalid: formik$1.touched.username && !!formik$1.errors.username, value: formik$1.values.username, onChange: formik$1.handleChange, type: "text", placeholder: "USERNAME" }),
+                    React__namespace.createElement(reactBootstrap.Form.Control.Feedback, { type: "invalid" }, formik$1.errors.username)),
+                React__namespace.createElement(reactBootstrap.Form.Group, { className: "mb-3" },
+                    React__namespace.createElement(reactBootstrap.InputGroup, null,
+                        React__namespace.createElement(reactBootstrap.FormControl, { name: "password", isInvalid: formik$1.touched.password && !!formik$1.errors.password, placeholder: "PASSWORD", value: formik$1.values.password, type: passwordVisible ? "text" : "password", onChange: formik$1.handleChange }),
+                        React__namespace.createElement(reactBootstrap.InputGroup.Text, { id: "basic-addon2" },
+                            React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faEye, onClick: togglePassword })),
+                        React__namespace.createElement(reactBootstrap.Form.Control.Feedback, { type: "invalid" }, formik$1.errors.password))),
+                React__namespace.createElement(reactBootstrap.Row, { className: "login-helpers mx-0 d-flex justify-content-between align-items-center" },
+                    React__namespace.createElement(reactBootstrap.Col, { className: "mb-2 d-flex flex-column justify-content-center p-0" },
+                        React__namespace.createElement("div", { className: "forgot-links d-flex justify-content-md-start justify-content-center align-items-center", onClick: function () { return props.setShowModal("password"); } },
+                            React__namespace.createElement("span", { className: "pr-2" }, "Forgot Password"),
+                            React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faGreaterThan, size: "xs" })),
+                        React__namespace.createElement("div", { className: "forgot-links d-flex justify-content-md-start justify-content-center align-items-center", onClick: function () { return props.setShowModal("username"); } },
+                            React__namespace.createElement("span", { className: "pr-2" }, "Forgot Username"),
+                            React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faGreaterThan, size: "xs" }))),
+                    React__namespace.createElement(reactBootstrap.Col, { className: "d-flex justify-content-md-end justify-content-center pr-0 align-items-center w-100" },
+                        React__namespace.createElement(reactBootstrap.Button, { className: "login-btn", color: "primary", onClick: function () { return formik$1.handleSubmit(); } }, "Log in")))))))));
+};
+
+var LoginImage = function (props) {
+    return (React__namespace.createElement(React__namespace.Fragment, null,
+        React__namespace.createElement("div", { className: "login-info-section h-100 mb-0" },
+            React__namespace.createElement("img", { alt: "login-image", className: "login-image", src: props.imgUrl }),
+            React__namespace.createElement("div", { className: "d-flex flex-column justify-content-center px-4 px-md-7 image-overlay" },
+                React__namespace.createElement("h2", { className: "login-heading" }, props.header),
+                props.text && React__namespace.createElement("p", null, props.text),
+                props.children))));
+};
+
+var ModalLogin = function (props) {
+    var handleReminder = function () {
+        console.log('Email has been sent to endpoint', props.endpoint);
+    };
+    return (React__namespace.createElement(reactBootstrap.Col, { lg: "12" },
+        React__namespace.createElement("p", null, props.body),
+        React__namespace.createElement(reactBootstrap.Form.Label, { htmlFor: "loginInput" + props.modal }, props.modal === 'User Name' ? 'Email address' : 'User Name'),
+        React__namespace.createElement(reactBootstrap.Form.Control, { type: "text", id: "loginInput" + props.modal, className: "mb-4" }),
+        React__namespace.createElement(reactBootstrap.Button, { color: "primary", onClick: handleReminder, size: "lg" }, "Send Reminder")));
+};
+
+var Login = function () {
+    var _a = React.useState(""), showModal = _a[0], setShowModal = _a[1];
+    var handleToggleModal = function () { return setShowModal(""); };
+    return (React__namespace.createElement("div", { className: "content h-100" },
+        showModal === "username" && (React__namespace.createElement(ModalOverlay, { show: !!showModal, setShow: handleToggleModal, header: "Forgot User Name" },
+            React__namespace.createElement(ModalLogin, { modal: "Username", body: "Enter you email address to receive a User Name Reminder", endpoint: "" }))),
+        showModal === "password" && (React__namespace.createElement(ModalOverlay, { show: !!showModal, setShow: handleToggleModal, header: "Forgot Password" },
+            React__namespace.createElement(ModalLogin, { modal: "Password", body: "Enter your User Name to receive a password reset link at the email\r\n              address on file", endpoint: "" }))),
+        React__namespace.createElement(reactBootstrap.Row, { className: "login-container h-100 m-0" },
+            React__namespace.createElement(reactBootstrap.Col, { xs: 12, lg: 7, className: "h-100 p-0" },
+                React__namespace.createElement(reactBootstrap.Container, { fluid: true, className: "d-flex align-items-center justify-content-center h-100" },
+                    React__namespace.createElement(LoginForm, { loading: false, 
+                        // login={login}
+                        // error={error}
+                        setShowModal: setShowModal }))),
+            React__namespace.createElement(reactBootstrap.Col, { xs: 12, lg: 5, className: "h-100 px-0" },
+                React__namespace.createElement(LoginImage, { imgUrl: "https://cdn.orrprotection.com/netsite/login2.jpg", header: "WHAT IS NETSITE?", text: "NetSITE provides secure, online access to all critical information\r\n          related to any fire protection system at any facility or site\r\n          serviced by ORR" },
+                    React__namespace.createElement("h2", { className: "info-heading" }, "All Documentation Online..."),
+                    React__namespace.createElement("ul", { className: "documentation-list" },
+                        "for all fire protection systems, located in any facility across the country",
+                        React__namespace.createElement("li", null, "Inspections Report"),
+                        React__namespace.createElement("li", null, "Proposals/ Pricing"),
+                        React__namespace.createElement("li", null, "Invoices"),
+                        React__namespace.createElement("li", null, "System Drawings"),
+                        React__namespace.createElement("li", null, "Owner Manual's")),
+                    React__namespace.createElement("div", { className: "login-info-link" },
+                        React__namespace.createElement("div", { className: "login-info-link-hover" }),
+                        React__namespace.createElement("a", { href: process.env.REACT_APP_ORR_NETREPORT_URL }, "Learn more"),
+                        React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faArrowRight })))))));
+};
+
 exports.AlertWrapped = AlertWrapped;
 exports.ButtonSpinner = ButtonSpinner;
 exports.CenteredSpinner = CenteredSpinner;
 exports.IsPhoneProvider = IsPhoneProvider;
+exports.Login = Login;
 exports.ModalOverlay = ModalOverlay;
 exports.NativeOverlay = NativeOverlay;
 exports.useIsPhoneContext = useIsPhoneContext;

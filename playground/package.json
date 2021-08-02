@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@orr/shared-style": "git+https://ksosnikova@bitbucket.org/combineddev/orr-global-styles.git#master",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -12,8 +14,7 @@
     "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3",
-    "web-vitals": "^1.0.1",
-    "@orr/shared-style": "git+https://ksosnikova@bitbucket.org/combineddev/orr-global-styles.git#master"
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

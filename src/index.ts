@@ -6,6 +6,7 @@ import {
 import { ModalOverlay } from "./Overlays/ModalOverlay";
 import { NativeOverlay } from "./Overlays/NativeOverlay";
 import { AlertWrapped } from "./Alerts/AlertWrapped";
+import { Login } from "./pages/login/Login";
 
 export {
   CenteredSpinner,
@@ -15,4 +16,5 @@ export {
   AlertWrapped,
   ModalOverlay,
   NativeOverlay,
+  Login,
 };
