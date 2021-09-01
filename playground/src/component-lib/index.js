@@ -7,9 +7,6 @@ import { useFormik } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faGreaterThan, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
-import { createHttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { onError } from '@apollo/client/link/error';
 
 var ModalOverlay = function (props) {
     return (React.createElement(React.Fragment, null,
@@ -300,33 +297,6 @@ var AlertWrapped = function (props) {
             React.createElement(AlertCard, __assign({}, AlertCardProps)))));
 };
 
-var httpLink = createHttpLink({
-    uri: process.env.REACT_APP_GATEWAY_URL,
-});
-var unauthorizedLink = onError(function (_a) {
-    var networkError = _a.networkError;
-    if (networkError &&
-        "statusCode" in networkError &&
-        (networkError.statusCode === 401 || networkError.statusCode === 403)) {
-        window.location.href = "/unauthorized";
-    }
-});
-var getApolloClient = function () {
-    var authLink = setContext(function (_, _a) {
-        var headers = _a.headers;
-        // get the authentication token from local storage if it exists
-        var token = sessionStorage.getItem(process.env.REACT_APP_SESSION_TOKEN_KEY);
-        // return the headers to the context so httpLink can read them
-        return {
-            headers: __assign(__assign({}, headers), { authorization: token ? "Bearer " + token : "" }),
-        };
-    });
-    return new ApolloClient({
-        link: authLink.concat(unauthorizedLink).concat(httpLink),
-        cache: new InMemoryCache(),
-    });
-};
-
 var NumberBoolToText = function (number) {
     switch (number) {
         case 0:
@@ -425,4 +395,4 @@ function getUniqueBy(arr, prop) {
     return arr.filter(function (o) { return !set.has(o[prop]) && set.add(o[prop]); });
 }
 
-export { AlertWrapped, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, Login, ModalOverlay, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, StringOrDefault, StringToShortDate, checkValuesData, extract, getApolloClient, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };
+export { AlertWrapped, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, Login, ModalOverlay, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, StringOrDefault, StringToShortDate, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };

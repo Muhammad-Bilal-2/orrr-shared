@@ -9,9 +9,6 @@ var formik = require('formik');
 var reactFontawesome = require('@fortawesome/react-fontawesome');
 var freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 var classNames = require('classnames');
-var client = require('@apollo/client');
-var context = require('@apollo/client/link/context');
-var error = require('@apollo/client/link/error');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -328,33 +325,6 @@ var AlertWrapped = function (props) {
             React__namespace.createElement(AlertCard, __assign({}, AlertCardProps)))));
 };
 
-var httpLink = client.createHttpLink({
-    uri: process.env.REACT_APP_GATEWAY_URL,
-});
-var unauthorizedLink = error.onError(function (_a) {
-    var networkError = _a.networkError;
-    if (networkError &&
-        "statusCode" in networkError &&
-        (networkError.statusCode === 401 || networkError.statusCode === 403)) {
-        window.location.href = "/unauthorized";
-    }
-});
-var getApolloClient = function () {
-    var authLink = context.setContext(function (_, _a) {
-        var headers = _a.headers;
-        // get the authentication token from local storage if it exists
-        var token = sessionStorage.getItem(process.env.REACT_APP_SESSION_TOKEN_KEY);
-        // return the headers to the context so httpLink can read them
-        return {
-            headers: __assign(__assign({}, headers), { authorization: token ? "Bearer " + token : "" }),
-        };
-    });
-    return new client.ApolloClient({
-        link: authLink.concat(unauthorizedLink).concat(httpLink),
-        cache: new client.InMemoryCache(),
-    });
-};
-
 var NumberBoolToText = function (number) {
     switch (number) {
         case 0:
@@ -468,7 +438,6 @@ exports.StringOrDefault = StringOrDefault;
 exports.StringToShortDate = StringToShortDate;
 exports.checkValuesData = checkValuesData;
 exports.extract = extract;
-exports.getApolloClient = getApolloClient;
 exports.getUniqueBy = getUniqueBy;
 exports.groupBy = groupBy;
 exports.isNotNull = isNotNull;

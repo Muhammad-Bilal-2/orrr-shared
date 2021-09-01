@@ -7,7 +7,6 @@ import {
 import { ModalOverlay } from "./Overlays/ModalOverlay";
 import { NativeOverlay } from "./Overlays/NativeOverlay";
 import { AlertWrapped } from "./Alerts/AlertWrapped";
-import { getApolloClient } from "./utilities/apollo.client";
 import {
   NumberBoolToText,
   StringToShortDate,
@@ -35,7 +34,6 @@ export {
   AlertWrapped,
   ModalOverlay,
   NativeOverlay,
-  getApolloClient,
   NumberBoolToText,
   StringToShortDate,
   StringOrDefault,
