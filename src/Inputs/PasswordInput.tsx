@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Inputs.module.scss";
 import { Form, InputGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
@@ -41,24 +40,19 @@ export const PasswordInput: React.FC<IPasswordInputProps> = ({
           disabled={disabled}
         />
         <InputGroup.Append
-          className={styles.togglePasswordHolder}
+          className="togglePasswordHolder"
           onClick={togglePassword}
         >
           <InputGroup.Text
             className={
-              passwordVisible
-                ? styles.passwordInputActive
-                : styles.passwordInput
+              passwordVisible ? "passwordInputActive" : "passwordInput"
             }
           >
             <FontAwesomeIcon icon={faEye} />
           </InputGroup.Text>
         </InputGroup.Append>
         {error && (
-          <Form.Control.Feedback
-            className={styles.passwordInvalid}
-            type="invalid"
-          >
+          <Form.Control.Feedback className="passwordInvalid" type="invalid">
             {error}
           </Form.Control.Feedback>
         )}

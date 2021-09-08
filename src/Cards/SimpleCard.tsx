@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Card, Row, Col } from "react-bootstrap";
 import { CenteredSpinner } from "../Spinner/index";
-import "./card.scss";
 interface ISimpleCardProps {
   loading: boolean;
   header?: string;

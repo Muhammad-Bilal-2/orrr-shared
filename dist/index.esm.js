@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { useState, useEffect, createContext, useContext, useRef } from 'react';
+import React__default, { useState, useEffect, createContext, useContext, useRef } from 'react';
 import { Modal, Spinner, Form, Col, Card, FormControl, InputGroup, Row, Button, Container } from 'react-bootstrap';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faGreaterThan, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faGreaterThan, faArrowRight, faLessThan } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
+import { useHistory } from 'react-router-dom';
 
 var ModalOverlay = function (props) {
     return (React.createElement(React.Fragment, null,
@@ -394,4 +395,52 @@ function getUniqueBy(arr, prop) {
     return arr.filter(function (o) { return !set.has(o[prop]) && set.add(o[prop]); });
 }
 
-export { AlertWrapped, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, Login, ModalOverlay, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, StringOrDefault, StringToShortDate, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };
+var LoadingButton = function (_a) {
+    var isLoading = _a.isLoading, defaultText = _a.defaultText, loadingText = _a.loadingText, onClick = _a.onClick, type = _a.type;
+    return (React.createElement(Button, { className: "d-flex justify-content-center", disabled: isLoading, onClick: onClick, type: type },
+        isLoading && (React.createElement(Spinner, { as: "span", animation: "grow", size: "sm", role: "status", "aria-hidden": "true" })),
+        isLoading ? loadingText : defaultText));
+};
+
+var SimpleCard = function (_a) {
+    var loading = _a.loading, header = _a.header, buttons = _a.buttons, isMobileView = _a.isMobileView, style = _a.style, bodyStyle = _a.bodyStyle, cardClass = _a.cardClass, headerClass = _a.headerClass, onClick = _a.onClick, children = _a.children; _a.className;
+    return (React.createElement(Card, { className: cardClass, style: style ? style : undefined, onClick: onClick },
+        header && (React.createElement(Card.Header, { className: headerClass },
+            React.createElement(Row, null,
+                React.createElement(Col, { xs: isMobileView ? 12 : 8 }, isMobileView ? (React.createElement("h3", { className: "card-title" }, header)) : (React.createElement("h2", { className: "card-title" }, header))),
+                buttons && React.createElement(Col, null, buttons)))),
+        children && (React.createElement(Card.Body, { style: bodyStyle ? bodyStyle : undefined },
+            React.createElement(CenteredSpinner, { loading: loading, size: isMobileView ? "sm" : "md" }, children)))));
+};
+
+var PasswordInput = function (_a) {
+    var name = _a.name, isInvalid = _a.isInvalid, error = _a.error, onChange = _a.onChange, value = _a.value, disabled = _a.disabled, placeholder = _a.placeholder;
+    var _b = React__default.useState(false), passwordVisible = _b[0], setPasswordVisible = _b[1];
+    var togglePassword = function () {
+        setPasswordVisible(!passwordVisible);
+    };
+    return (React__default.createElement(React__default.Fragment, null,
+        React__default.createElement(InputGroup, null,
+            React__default.createElement(Form.Control, { name: name, placeholder: placeholder, isInvalid: isInvalid, value: value, type: passwordVisible ? "text" : "password", onChange: onChange, disabled: disabled }),
+            React__default.createElement(InputGroup.Append, { className: "togglePasswordHolder", onClick: togglePassword },
+                React__default.createElement(InputGroup.Text, { className: passwordVisible ? "passwordInputActive" : "passwordInput" },
+                    React__default.createElement(FontAwesomeIcon, { icon: faEye }))),
+            error && (React__default.createElement(Form.Control.Feedback, { className: "passwordInvalid", type: "invalid" }, error)))));
+};
+
+var BackButton = function () {
+    var history = useHistory();
+    return (React__default.createElement(React__default.Fragment, null,
+        React__default.createElement("div", { className: "backButtonHolder", onClick: function () { return history.goBack(); } },
+            React__default.createElement(FontAwesomeIcon, { icon: faLessThan, size: "xs" }),
+            React__default.createElement("span", { className: "pl-2" }, "Back"))));
+};
+
+var ButtonLoadingSpinner = function (props) {
+    var _a = __assign({}, props); _a.loading; _a.loadingText; var btnProps = __rest(_a, ["loading", "loadingText"]);
+    return (React.createElement(React.Fragment, null,
+        React.createElement(Button, __assign({}, btnProps, { className: "spinner-button-styles" }),
+            React.createElement(ButtonSpinner, { loadingText: props.loadingText, loading: props.loading }, props.children))));
+};
+
+export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, LoadingButton, Login, ModalOverlay, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };
