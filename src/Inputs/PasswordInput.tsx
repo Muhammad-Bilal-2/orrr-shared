@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 interface IPasswordInputProps {
+  label?: string;
   isInvalid?: boolean;
   name: string;
   value: string;
@@ -14,6 +15,7 @@ interface IPasswordInputProps {
 }
 
 export const PasswordInput: React.FC<IPasswordInputProps> = ({
+  label,
   name,
   isInvalid,
   error,
@@ -29,6 +31,7 @@ export const PasswordInput: React.FC<IPasswordInputProps> = ({
 
   return (
     <>
+      {label && <Form.Label>{label}</Form.Label>}
       <InputGroup>
         <Form.Control
           name={name}

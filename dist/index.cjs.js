@@ -444,12 +444,13 @@ var SimpleCard = function (_a) {
 };
 
 var PasswordInput = function (_a) {
-    var name = _a.name, isInvalid = _a.isInvalid, error = _a.error, onChange = _a.onChange, value = _a.value, disabled = _a.disabled, placeholder = _a.placeholder;
+    var label = _a.label, name = _a.name, isInvalid = _a.isInvalid, error = _a.error, onChange = _a.onChange, value = _a.value, disabled = _a.disabled, placeholder = _a.placeholder;
     var _b = React__default['default'].useState(false), passwordVisible = _b[0], setPasswordVisible = _b[1];
     var togglePassword = function () {
         setPasswordVisible(!passwordVisible);
     };
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
+        label && React__default['default'].createElement(reactBootstrap.Form.Label, null, label),
         React__default['default'].createElement(reactBootstrap.InputGroup, null,
             React__default['default'].createElement(reactBootstrap.Form.Control, { name: name, placeholder: placeholder, isInvalid: isInvalid, value: value, type: passwordVisible ? "text" : "password", onChange: onChange, disabled: disabled }),
             React__default['default'].createElement(reactBootstrap.InputGroup.Append, { className: "togglePasswordHolder", onClick: togglePassword },

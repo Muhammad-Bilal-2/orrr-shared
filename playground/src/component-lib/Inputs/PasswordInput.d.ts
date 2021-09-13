@@ -1,5 +1,6 @@
 import React from "react";
 interface IPasswordInputProps {
+    label?: string;
     isInvalid?: boolean;
     name: string;
     value: string;
