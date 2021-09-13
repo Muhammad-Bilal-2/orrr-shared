@@ -1,4 +1,4 @@
-import { Login } from "./pages/login/Login";
+import { Login, ILogin } from "./pages/login/Login";
 import { ModalForgotPassword } from "./pages/login/ModalForgotPassword";
 import { LoginForm } from "./pages/login/LoginForm";
 import { LoginImage } from "./pages/login/LoginImage";
@@ -71,4 +71,5 @@ export {
   LoginForm,
   LoginImage,
   ModalLogin,
+  ILogin,
 };
