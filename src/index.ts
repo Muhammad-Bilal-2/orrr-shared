@@ -1,4 +1,8 @@
 import { Login } from "./pages/login/Login";
+import { ModalForgotPassword } from "./pages/login/ModalForgotPassword";
+import { LoginForm } from "./pages/login/LoginForm";
+import { LoginImage } from "./pages/login/LoginImage";
+import { ModalLogin } from "./pages/login/ModalLogin";
 import { CenteredSpinner, ButtonSpinner } from "./Spinner";
 import {
   IsPhoneProvider,
@@ -63,4 +67,8 @@ export {
   PasswordInput,
   BackButton,
   ButtonLoadingSpinner,
+  ModalForgotPassword,
+  LoginForm,
+  LoginImage,
+  ModalLogin,
 };
