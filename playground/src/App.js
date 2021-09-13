@@ -1,8 +1,12 @@
 import "./App.css";
-// import { CenteredSpinner } from "./component-lib/index";
 import "bootstrap/dist/css/bootstrap.css";
 import { useIsPhoneContext } from "./component-lib/index";
-import { Login } from "./component-lib/index";
+import {
+  ModalOverlay,
+  ModalNoHeaderOverlay,
+  ModalSuccess,
+  NativeOverlay,
+} from "./component-lib/index";
 
 import "@orr/shared-style";
 // import "@orr/shared-style/src/index";
@@ -12,13 +16,21 @@ function App() {
 
   return (
     <>
-      {/* <h3 className="id">123</h3>
-      <CenteredSpinner
-        loading={true}
-        size="md"
-        loadingText="Authenticating..."
-      /> */}
-      <Login />
+      <h3 className="id">123</h3>
+      {/* <ModalNoHeaderOverlay
+        // text="text"
+        show={true}
+        setShow={() => console.log("show")}
+      >
+        <p>just text</p>
+      </ModalNoHeaderOverlay> */}
+      <ModalOverlay
+        header={"text"}
+        show={true}
+        setShow={() => console.log("show")}
+      >
+        <p>just text</p>
+      </ModalOverlay>
     </>
   );
 }

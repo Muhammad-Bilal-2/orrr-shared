@@ -473,6 +473,20 @@ var ButtonLoadingSpinner = function (props) {
             React__namespace.createElement(ButtonSpinner, { loadingText: props.loadingText, loading: props.loading }, props.children))));
 };
 
+var ModalNoHeaderOverlay = function (props) {
+    return (React__namespace.createElement(React__namespace.Fragment, null,
+        React__namespace.createElement(reactBootstrap.Modal, { className: "modal-no-header", onHide: props.setShow, animation: false, size: props.size ? props.size : "lg", show: props.show, centered: true },
+            React__namespace.createElement(reactBootstrap.CloseButton, { onClick: props.setShow }),
+            React__namespace.createElement(reactBootstrap.Modal.Body, { className: "modal-body" }, props.children))));
+};
+
+var ModalSuccess = function (props) {
+    return (React__default['default'].createElement(ModalNoHeaderOverlay, { show: props.show, setShow: props.setShow },
+        React__default['default'].createElement(reactFontawesome.FontAwesomeIcon, { className: "modal-success-icon", icon: freeSolidSvgIcons.faCheckCircle, size: "10x" }),
+        React__default['default'].createElement("h2", { className: "mb-2" }, "Success!"),
+        React__default['default'].createElement("p", null, props.text)));
+};
+
 exports.AlertWrapped = AlertWrapped;
 exports.BackButton = BackButton;
 exports.ButtonLoadingSpinner = ButtonLoadingSpinner;
@@ -482,7 +496,9 @@ exports.GetToday = GetToday;
 exports.IsPhoneProvider = IsPhoneProvider;
 exports.LoadingButton = LoadingButton;
 exports.Login = Login;
+exports.ModalNoHeaderOverlay = ModalNoHeaderOverlay;
 exports.ModalOverlay = ModalOverlay;
+exports.ModalSuccess = ModalSuccess;
 exports.NativeOverlay = NativeOverlay;
 exports.NumberBoolToText = NumberBoolToText;
 exports.NumberOrDefault = NumberOrDefault;

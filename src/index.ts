@@ -30,6 +30,9 @@ import { SimpleCard } from "./Cards/SimpleCard";
 import { PasswordInput } from "./Inputs/PasswordInput";
 import { BackButton } from "./Buttons/BackButton";
 import { ButtonLoadingSpinner } from "./Buttons/ButtonSpinner";
+import { ModalNoHeaderOverlay } from "./Overlays/ModalNoHeaderOverlay";
+import { ModalSuccess } from "./Overlays/ModalSuccess";
+
 export {
   CenteredSpinner,
   IsPhoneProvider,
@@ -38,6 +41,8 @@ export {
   AlertWrapped,
   ModalOverlay,
   NativeOverlay,
+  ModalSuccess,
+  ModalNoHeaderOverlay,
   NumberBoolToText,
   StringToShortDate,
   StringOrDefault,

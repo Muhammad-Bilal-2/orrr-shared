@@ -1,10 +1,10 @@
 import * as React from 'react';
 import React__default, { useState, useEffect, createContext, useContext, useRef } from 'react';
-import { Modal, Spinner, Form, Col, Card, FormControl, InputGroup, Row, Button, Container } from 'react-bootstrap';
+import { Modal, Spinner, Form, Col, Card, FormControl, InputGroup, Row, Button, Container, CloseButton } from 'react-bootstrap';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faGreaterThan, faArrowRight, faLessThan } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faGreaterThan, faArrowRight, faLessThan, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 import { useHistory } from 'react-router-dom';
 
@@ -443,4 +443,18 @@ var ButtonLoadingSpinner = function (props) {
             React.createElement(ButtonSpinner, { loadingText: props.loadingText, loading: props.loading }, props.children))));
 };
 
-export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, LoadingButton, Login, ModalOverlay, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };
+var ModalNoHeaderOverlay = function (props) {
+    return (React.createElement(React.Fragment, null,
+        React.createElement(Modal, { className: "modal-no-header", onHide: props.setShow, animation: false, size: props.size ? props.size : "lg", show: props.show, centered: true },
+            React.createElement(CloseButton, { onClick: props.setShow }),
+            React.createElement(Modal.Body, { className: "modal-body" }, props.children))));
+};
+
+var ModalSuccess = function (props) {
+    return (React__default.createElement(ModalNoHeaderOverlay, { show: props.show, setShow: props.setShow },
+        React__default.createElement(FontAwesomeIcon, { className: "modal-success-icon", icon: faCheckCircle, size: "10x" }),
+        React__default.createElement("h2", { className: "mb-2" }, "Success!"),
+        React__default.createElement("p", null, props.text)));
+};
+
+export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, LoadingButton, Login, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };
