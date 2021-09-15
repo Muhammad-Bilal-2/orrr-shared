@@ -9,10 +9,14 @@ import { ModalLogin } from "./ModalLogin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
+export interface AuthError {
+  message: string;
+  details: object;
+}
 export interface ILogin {
   login?: (username: string, password: string) => void;
   loading?: boolean | undefined;
-  // error?: AuthError | null;
+  error?: AuthError | null;
 }
 
 export const Login: React.FC<ILogin> = () =>

@@ -19,7 +19,7 @@ import { CenteredSpinner } from "../../Spinner";
 
 interface ILoginForm extends ILogin {
   setShowModal: React.Dispatch<React.SetStateAction<string>>;
-  loading: boolean;
+  loading?: boolean;
 }
 
 export interface ILoginData {

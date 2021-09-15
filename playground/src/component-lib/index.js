@@ -238,6 +238,18 @@ var Login = function () {
                         React.createElement(FontAwesomeIcon, { icon: faArrowRight })))))));
 };
 
+var ModalForgotPassword = function () {
+    var handleReminder = function (type) {
+        console.log("Email with password been sent");
+    };
+    return (React.createElement(Col, { lg: "12" },
+        React.createElement("h3", null, "Password Reset"),
+        React.createElement("p", null, "Enter your User Name to receive a password reset link at the email address on file"),
+        React.createElement(Form.Label, { htmlFor: "inputPassword" }, "User Name"),
+        React.createElement(Form.Control, { type: "text", id: "inputUsername", className: "mb-4" }),
+        React.createElement(Button, { color: "primary", onClick: handleReminder, size: "lg" }, "Send Reminder")));
+};
+
 var MediaQuery = {
     phone: "(min-width: 320px) and (max-width: 568px)",
     tablet: "(min-width : 768px) and (max-width : 1024px)",
@@ -459,4 +471,4 @@ var ModalSuccess = function (props) {
         React__default.createElement("p", null, props.text)));
 };
 
-export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, LoadingButton, Login, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };
+export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, LoadingButton, Login, LoginForm, LoginImage, ModalForgotPassword, ModalLogin, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };

@@ -267,6 +267,18 @@ var Login = function () {
                         React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faArrowRight })))))));
 };
 
+var ModalForgotPassword = function () {
+    var handleReminder = function (type) {
+        console.log("Email with password been sent");
+    };
+    return (React__namespace.createElement(reactBootstrap.Col, { lg: "12" },
+        React__namespace.createElement("h3", null, "Password Reset"),
+        React__namespace.createElement("p", null, "Enter your User Name to receive a password reset link at the email address on file"),
+        React__namespace.createElement(reactBootstrap.Form.Label, { htmlFor: "inputPassword" }, "User Name"),
+        React__namespace.createElement(reactBootstrap.Form.Control, { type: "text", id: "inputUsername", className: "mb-4" }),
+        React__namespace.createElement(reactBootstrap.Button, { color: "primary", onClick: handleReminder, size: "lg" }, "Send Reminder")));
+};
+
 var MediaQuery = {
     phone: "(min-width: 320px) and (max-width: 568px)",
     tablet: "(min-width : 768px) and (max-width : 1024px)",
@@ -497,6 +509,10 @@ exports.GetToday = GetToday;
 exports.IsPhoneProvider = IsPhoneProvider;
 exports.LoadingButton = LoadingButton;
 exports.Login = Login;
+exports.LoginForm = LoginForm;
+exports.LoginImage = LoginImage;
+exports.ModalForgotPassword = ModalForgotPassword;
+exports.ModalLogin = ModalLogin;
 exports.ModalNoHeaderOverlay = ModalNoHeaderOverlay;
 exports.ModalOverlay = ModalOverlay;
 exports.ModalSuccess = ModalSuccess;
