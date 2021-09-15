@@ -470,4 +470,17 @@ var ModalSuccess = function (props) {
         React__default.createElement("p", null, props.text)));
 };
 
-export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, GetToday, IsPhoneProvider, LoadingButton, Login, LoginForm, LoginImage, ModalForgotPassword, ModalLogin, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };
+var Dropdowns = function (_a) {
+    var selectedItem = _a.selectedItem, items = _a.items, _b = _a.isDisabled, isDisabled = _b === void 0 ? false : _b, setSelectedItem = _a.setSelectedItem, text = _a.text, dropDownDisplayItemText = _a.dropDownDisplayItemText;
+    return (React__default.createElement(Form.Group, null,
+        React__default.createElement(Form.Control, { size: "lg", as: "select", value: selectedItem, onChange: function (e) {
+                setSelectedItem(e.target.value);
+            }, disabled: isDisabled }, (items === null || items === void 0 ? void 0 : items.length) !== 1 ? (React__default.createElement(React__default.Fragment, null,
+            dropDownDisplayItemText ? (React__default.createElement("option", { value: "" }, dropDownDisplayItemText)) : null,
+            items &&
+                items.map(function (dropdownitem, index) { return (React__default.createElement("option", { key: index, value: dropdownitem.key },
+                    dropdownitem.value,
+                    text ? text : null)); }))) : (items && (React__default.createElement("option", { key: items[0].key, value: items[0].key }, items[0].value))))));
+};
+
+export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, Dropdowns, GetToday, IsPhoneProvider, LoadingButton, Login, LoginForm, LoginImage, ModalForgotPassword, ModalLogin, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };

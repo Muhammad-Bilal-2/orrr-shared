@@ -500,11 +500,25 @@ var ModalSuccess = function (props) {
         React__default['default'].createElement("p", null, props.text)));
 };
 
+var Dropdowns = function (_a) {
+    var selectedItem = _a.selectedItem, items = _a.items, _b = _a.isDisabled, isDisabled = _b === void 0 ? false : _b, setSelectedItem = _a.setSelectedItem, text = _a.text, dropDownDisplayItemText = _a.dropDownDisplayItemText;
+    return (React__default['default'].createElement(reactBootstrap.Form.Group, null,
+        React__default['default'].createElement(reactBootstrap.Form.Control, { size: "lg", as: "select", value: selectedItem, onChange: function (e) {
+                setSelectedItem(e.target.value);
+            }, disabled: isDisabled }, (items === null || items === void 0 ? void 0 : items.length) !== 1 ? (React__default['default'].createElement(React__default['default'].Fragment, null,
+            dropDownDisplayItemText ? (React__default['default'].createElement("option", { value: "" }, dropDownDisplayItemText)) : null,
+            items &&
+                items.map(function (dropdownitem, index) { return (React__default['default'].createElement("option", { key: index, value: dropdownitem.key },
+                    dropdownitem.value,
+                    text ? text : null)); }))) : (items && (React__default['default'].createElement("option", { key: items[0].key, value: items[0].key }, items[0].value))))));
+};
+
 exports.AlertWrapped = AlertWrapped;
 exports.BackButton = BackButton;
 exports.ButtonLoadingSpinner = ButtonLoadingSpinner;
 exports.ButtonSpinner = ButtonSpinner;
 exports.CenteredSpinner = CenteredSpinner;
+exports.Dropdowns = Dropdowns;
 exports.GetToday = GetToday;
 exports.IsPhoneProvider = IsPhoneProvider;
 exports.LoadingButton = LoadingButton;
