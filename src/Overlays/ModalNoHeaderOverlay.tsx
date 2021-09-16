@@ -3,7 +3,7 @@ import { Modal, CloseButton } from "react-bootstrap";
 
 export interface IModalNoHeaderOverlayProps {
   show: boolean;
-  setShow: () => void;
+  setShow: React.Dispatch<React.SetStateAction<string>>;
   size?: "sm" | "lg";
 }
 
@@ -20,7 +20,7 @@ export const ModalNoHeaderOverlay: React.FC<IModalNoHeaderOverlayProps> = (
         show={props.show}
         centered
       >
-        <CloseButton onClick={props.setShow} />
+        <CloseButton onClick={() => props.setShow("")} />
         <Modal.Body className="modal-body">{props.children}</Modal.Body>
       </Modal>
     </>

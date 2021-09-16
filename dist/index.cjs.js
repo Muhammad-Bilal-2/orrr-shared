@@ -6,8 +6,8 @@ var React = require('react');
 var reactBootstrap = require('react-bootstrap');
 var yup = require('yup');
 var formik = require('formik');
-var reactFontawesome = require('@fortawesome/react-fontawesome');
 var freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
+var reactFontawesome = require('@fortawesome/react-fontawesome');
 var classNames = require('classnames');
 var reactRouterDom = require('react-router-dom');
 
@@ -38,89 +38,113 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var yup__namespace = /*#__PURE__*/_interopNamespace(yup);
 var classNames__default = /*#__PURE__*/_interopDefaultLegacy(classNames);
 
-var ModalOverlay = function (props) {
-    return (React__namespace.createElement(React__namespace.Fragment, null,
-        React__namespace.createElement(reactBootstrap.Modal, { className: "modal-card-overlay", onHide: props.setShow, show: props.show, centered: true },
-            React__namespace.createElement(reactBootstrap.Modal.Header, { closeButton: true, onHide: props.setShow }, props.header),
-            React__namespace.createElement(reactBootstrap.Modal.Body, null, props.children),
-            React__namespace.createElement(reactBootstrap.Modal.Footer, null))));
-};
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
 
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
+  if (!css || typeof document === 'undefined') { return; }
 
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
 
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-}
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
     }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
 }
+
+var css_248z = ".Login-module_loginContainer__2EudT {\n  background-color: #fff !important;\n  height: 100vh;\n  margin: 0 !important; }\n  .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td {\n    box-shadow: none !important;\n    background-color: inherit !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td label {\n      color: #222a42 !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHeading__2ecv9 {\n      font-size: x-large;\n      text-align: center;\n      font-weight: 700 !important;\n      color: #222a42 !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginErrorMessage__1QePR {\n      color: red;\n      font-size: 1rem;\n      text-align: center;\n      position: absolute;\n      top: 2.8rem;\n      width: 100%; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_invalidFeedback__Hpui0 {\n      font-size: 0.8rem;\n      margin-top: 0.1rem;\n      margin-bottom: -0.8rem; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginInput__GZ68d {\n      border-color: rgba(34, 42, 66, 0.2) !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td input[name=\"password\"] {\n      border-color: rgba(34, 42, 66, 0.2) !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E {\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n      margin: auto 0 !important; }\n      .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E .Login-module_loginHelpersContainer__1FCu0 {\n        display: flex;\n        justify-content: center;\n        flex-direction: column;\n        flex-basis: 0; }\n        @media (max-width: 575.98px) {\n          .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E .Login-module_loginHelpersContainer__1FCu0 {\n            flex-basis: inherit;\n            margin-bottom: 0.9rem; } }\n        @media (min-width: 575.98px) {\n          .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E .Login-module_loginHelpersContainer__1FCu0 {\n            padding: 0; } }\n      .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E button {\n        min-width: 160px; }\n        @media (min-width: 1440px) {\n          .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E button {\n            min-width: 220px; } }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_forgotLinks__2LBVZ {\n      cursor: pointer;\n      color: #00c389;\n      font-size: 0.8rem;\n      display: flex;\n      justify-content: flex-start;\n      align-items: center; }\n      @media (max-width: 575.98px) {\n        .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_forgotLinks__2LBVZ {\n          justify-content: center; } }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginFooter__1s1Xl .Login-module_row__3BK-N {\n      margin: 0; }\n  .Login-module_loginContainer__2EudT .Login-module_loginImage__1EIfr {\n    height: 100%;\n    object-fit: cover;\n    max-width: 100%;\n    opacity: 0.2; }\n  .Login-module_loginContainer__2EudT .Login-module_imageOverlay__LUkPu {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    padding: 0 10rem 0 25px; }\n    @media (max-width: 575.98px) {\n      .Login-module_loginContainer__2EudT .Login-module_imageOverlay__LUkPu {\n        padding: 0 2rem 0 25px; } }\n  .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC {\n    background-color: black !important;\n    color: #fff;\n    margin-bottom: 0;\n    height: 100vh; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoTitle__1dfVu {\n      color: #fff;\n      font-weight: 700;\n      font-size: 1.5rem; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC p {\n      color: white;\n      margin-bottom: 1rem; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC ul li {\n      color: white !important; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6 {\n      display: flex;\n      width: 150px;\n      justify-content: center;\n      align-items: center;\n      position: relative;\n      cursor: pointer; }\n      .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6 a {\n        z-index: 100;\n        font-size: 1.2rem;\n        font-weight: 500; }\n      .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6 svg {\n        z-index: 100;\n        padding-left: 0.5rem;\n        font-size: 1.5rem;\n        color: #fff; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLinkHover__Sv7Ae {\n      background-color: #ffb81c;\n      position: absolute;\n      top: 0;\n      left: 0;\n      height: 100%;\n      transition: all 0.3s ease-out;\n      width: 0.5rem; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6:hover > .Login-module_loginInfoLinkHover__Sv7Ae {\n      width: 100%; }\n";
+var styles = {"loginContainer":"Login-module_loginContainer__2EudT","cardLoginForm":"Login-module_cardLoginForm__1G8td","loginHeading":"Login-module_loginHeading__2ecv9","loginErrorMessage":"Login-module_loginErrorMessage__1QePR","invalidFeedback":"Login-module_invalidFeedback__Hpui0","loginInput":"Login-module_loginInput__GZ68d","loginHelpers":"Login-module_loginHelpers__2Dx_E","loginHelpersContainer":"Login-module_loginHelpersContainer__1FCu0","forgotLinks":"Login-module_forgotLinks__2LBVZ","loginFooter":"Login-module_loginFooter__1s1Xl","row":"Login-module_row__3BK-N","loginImage":"Login-module_loginImage__1EIfr","imageOverlay":"Login-module_imageOverlay__LUkPu","loginInfoSection":"Login-module_loginInfoSection__1exRC","loginInfoTitle":"Login-module_loginInfoTitle__1dfVu","loginInfoLink":"Login-module_loginInfoLink__38Lu6","loginInfoLinkHover":"Login-module_loginInfoLinkHover__Sv7Ae"};
+styleInject(css_248z);
+
+var LoginForm = function (props) {
+    var schema = yup__namespace.object().shape({
+        username: yup__namespace.string().trim().required("Username is required"),
+        password: yup__namespace.string().trim().required("Password is required"),
+    });
+    var formik$1 = formik.useFormik({
+        initialValues: {
+            username: "",
+            password: "",
+        },
+        validationSchema: schema,
+        onSubmit: props.handleSubmit,
+        enableReinitialize: true,
+    });
+    return (React__namespace.createElement(React__namespace.Fragment, null,
+        React__namespace.createElement(reactBootstrap.Form, { as: reactBootstrap.Col, xs: 10, sm: 8, md: 6, lg: 7, onKeyDown: function (e) {
+                if (e.key === "Enter") {
+                    formik$1.handleSubmit();
+                }
+            } },
+            React__namespace.createElement(reactBootstrap.Card, { className: styles.cardLoginForm },
+                React__namespace.createElement(reactBootstrap.Card.Header, null,
+                    React__namespace.createElement(reactBootstrap.Card.Title, { className: styles.loginHeading }, "Welcome")),
+                React__namespace.createElement(reactBootstrap.Card.Body, null,
+                    props.error && (React__namespace.createElement("div", { className: styles.loginErrorMessage },
+                        props.error.message,
+                        " ")),
+                    React__namespace.createElement(reactBootstrap.Form.Group, { className: "mb-3" },
+                        React__namespace.createElement(reactBootstrap.Form.Label, null, "USERNAME"),
+                        React__namespace.createElement(reactBootstrap.FormControl, { name: "username", isInvalid: formik$1.touched.username && !!formik$1.errors.username, value: formik$1.values.username, onChange: formik$1.handleChange, type: "text", placeholder: "USERNAME", className: styles.loginInput }),
+                        React__namespace.createElement(reactBootstrap.Form.Control.Feedback, { type: "invalid", className: styles.invalidFeedback }, formik$1.errors.username)),
+                    React__namespace.createElement(reactBootstrap.Form.Group, { className: "mb-3" },
+                        React__namespace.createElement(PasswordInput, { label: "PASSWORD", placeholder: "PASSWORD", isInvalid: formik$1.touched.password && !!formik$1.errors.password, error: formik$1.errors.password, onChange: formik$1.handleChange, value: formik$1.values.password, name: "password" })),
+                    React__namespace.createElement(reactBootstrap.Row, { className: styles.loginHelpers },
+                        React__namespace.createElement(reactBootstrap.Col, { className: styles.loginHelpersContainer },
+                            React__namespace.createElement("div", { className: styles.forgotLinks, onClick: function () { return props.setShowModal("password"); } },
+                                React__namespace.createElement("span", { className: "pr-2" }, "Forgot Password"),
+                                React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faGreaterThan, size: "xs" })),
+                            React__namespace.createElement("div", { className: styles.forgotLinks, onClick: function () { return props.setShowModal("username"); } },
+                                React__namespace.createElement("span", { className: "pr-2" }, "Forgot Username"),
+                                React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faGreaterThan, size: "xs" }))),
+                        React__namespace.createElement(reactBootstrap.Col, { className: "d-flex justify-content-sm-end justify-content-center px-0 align-items-center" },
+                            React__namespace.createElement(LoadingButton, { className: styles.loginBtn, color: "primary", isLoading: props.loading, defaultText: "Log in", loadingText: "Loading", onClick: function () { return formik$1.handleSubmit(); } }))))))));
+};
+
+var LoginImage = function (props) {
+    return (React__namespace.createElement(React__namespace.Fragment, null,
+        React__namespace.createElement("div", { className: styles.loginInfoSection },
+            React__namespace.createElement("img", { alt: "login-image", className: styles.loginImage, src: props.imgUrl }),
+            React__namespace.createElement("div", { className: styles.imageOverlay },
+                React__namespace.createElement("h2", { className: styles.loginInfoTitle }, props.header),
+                props.text && React__namespace.createElement("p", null, props.text),
+                props.children))));
+};
+
+var Login = function (props) {
+    return (React__namespace.createElement("div", { className: "content h-100" },
+        React__namespace.createElement(reactBootstrap.Row, { className: styles.loginContainer },
+            React__namespace.createElement(reactBootstrap.Col, { xs: 12, lg: 7, className: "h-100 p-0" },
+                React__namespace.createElement(reactBootstrap.Container, { fluid: true, className: "d-flex align-items-center justify-content-center h-100" },
+                    React__namespace.createElement(LoginForm, { loading: props.loading, handleSubmit: props.handleSubmit, error: props.error, setShowModal: props.setShowModal }))),
+            React__namespace.createElement(reactBootstrap.Col, { xs: 12, lg: 5, className: "h-100 px-0" },
+                React__namespace.createElement(LoginImage, { imgUrl: "https://cdn.orrprotection.com/netsite/login2.jpg", header: "WHAT IS NETSITE?", text: "NetSITE provides secure, online access to all critical information\r\n          related to any fire protection system at any facility or site\r\n          serviced by ORR" },
+                    React__namespace.createElement("h2", { className: styles.loginInfoTitle }, "All Documentation Online..."),
+                    React__namespace.createElement("p", null, "for all fire protection systems, located in any facility across the country"),
+                    React__namespace.createElement("ul", null,
+                        React__namespace.createElement("li", null, "Inspections Report"),
+                        React__namespace.createElement("li", null, "Proposals/ Pricing"),
+                        React__namespace.createElement("li", null, "Invoices"),
+                        React__namespace.createElement("li", null, "System Drawings"),
+                        React__namespace.createElement("li", null, "Owner Manual's")),
+                    React__namespace.createElement("div", { className: styles.loginInfoLink },
+                        React__namespace.createElement("div", { className: styles.loginInfoLinkHover }),
+                        React__namespace.createElement("a", { href: process.env.REACT_APP_ORR_NETREPORT_URL }, "Learn more"),
+                        React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faArrowRight })))))));
+};
 
 var big = "20rem";
 var med = "10rem";
@@ -162,123 +186,6 @@ var ButtonSpinner = function (props) {
     return React__namespace.createElement(React__namespace.Fragment, null, props.loading ? getSpinner() : props.children);
 };
 
-var LoginForm = function (props) {
-    var _a = React.useState(false), passwordVisible = _a[0], setPasswordVisible = _a[1];
-    var schema = yup__namespace.object().shape({
-        username: yup__namespace.string().trim().required("Username is required"),
-        password: yup__namespace.string().trim().required("Password is required"),
-    });
-    var handleSubmit = function () { return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            return [2 /*return*/];
-        });
-    }); };
-    var formik$1 = formik.useFormik({
-        initialValues: {
-            username: "",
-            password: "",
-        },
-        validationSchema: schema,
-        onSubmit: handleSubmit,
-        enableReinitialize: true,
-    });
-    var togglePassword = function () {
-        setPasswordVisible(!passwordVisible);
-    };
-    return (React__namespace.createElement(React__namespace.Fragment, null, props.loading ? (React__namespace.createElement(CenteredSpinner, { loading: true, size: "md", loadingText: "Authenticating..." })) : (React__namespace.createElement(reactBootstrap.Form, { as: reactBootstrap.Col, xs: 10, sm: 8, md: 6, lg: 7, onKeyDown: function (e) {
-            if (e.key === "Enter") {
-                formik$1.handleSubmit();
-            }
-        } },
-        React__namespace.createElement(reactBootstrap.Card, { className: "card-login-form card-white" },
-            React__namespace.createElement(reactBootstrap.Card.Header, null,
-                React__namespace.createElement(reactBootstrap.Card.Title, { className: "login-heading" }, "Welcome")),
-            React__namespace.createElement(reactBootstrap.Card.Body, null,
-                React__namespace.createElement(reactBootstrap.Form.Group, { className: "mb-3", controlId: "validationCustom01" },
-                    React__namespace.createElement(reactBootstrap.FormControl, { name: "username", isInvalid: formik$1.touched.username && !!formik$1.errors.username, value: formik$1.values.username, onChange: formik$1.handleChange, type: "text", placeholder: "USERNAME" }),
-                    React__namespace.createElement(reactBootstrap.Form.Control.Feedback, { type: "invalid" }, formik$1.errors.username)),
-                React__namespace.createElement(reactBootstrap.Form.Group, { className: "mb-3" },
-                    React__namespace.createElement(reactBootstrap.InputGroup, null,
-                        React__namespace.createElement(reactBootstrap.FormControl, { name: "password", isInvalid: formik$1.touched.password && !!formik$1.errors.password, placeholder: "PASSWORD", value: formik$1.values.password, type: passwordVisible ? "text" : "password", onChange: formik$1.handleChange }),
-                        React__namespace.createElement(reactBootstrap.InputGroup.Text, { id: "basic-addon2" },
-                            React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faEye, onClick: togglePassword })),
-                        React__namespace.createElement(reactBootstrap.Form.Control.Feedback, { type: "invalid" }, formik$1.errors.password))),
-                React__namespace.createElement(reactBootstrap.Row, { className: "login-helpers mx-0 d-flex justify-content-between align-items-center" },
-                    React__namespace.createElement(reactBootstrap.Col, { className: "mb-2 d-flex flex-column justify-content-center p-0" },
-                        React__namespace.createElement("div", { className: "forgot-links d-flex justify-content-md-start justify-content-center align-items-center", onClick: function () { return props.setShowModal("password"); } },
-                            React__namespace.createElement("span", { className: "pr-2" }, "Forgot Password"),
-                            React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faGreaterThan, size: "xs" })),
-                        React__namespace.createElement("div", { className: "forgot-links d-flex justify-content-md-start justify-content-center align-items-center", onClick: function () { return props.setShowModal("username"); } },
-                            React__namespace.createElement("span", { className: "pr-2" }, "Forgot Username"),
-                            React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faGreaterThan, size: "xs" }))),
-                    React__namespace.createElement(reactBootstrap.Col, { className: "d-flex justify-content-md-end justify-content-center pr-0 align-items-center w-100" },
-                        React__namespace.createElement(reactBootstrap.Button, { className: "login-btn", color: "primary", onClick: function () { return formik$1.handleSubmit(); } }, "Log in")))))))));
-};
-
-var LoginImage = function (props) {
-    return (React__namespace.createElement(React__namespace.Fragment, null,
-        React__namespace.createElement("div", { className: "login-info-section h-100 mb-0" },
-            React__namespace.createElement("img", { alt: "login-image", className: "login-image", src: props.imgUrl }),
-            React__namespace.createElement("div", { className: "d-flex flex-column justify-content-center px-4 px-md-7 image-overlay" },
-                React__namespace.createElement("h2", { className: "login-heading" }, props.header),
-                props.text && React__namespace.createElement("p", null, props.text),
-                props.children))));
-};
-
-var ModalLogin = function (props) {
-    var handleReminder = function () {
-        console.log('Email has been sent to endpoint', props.endpoint);
-    };
-    return (React__namespace.createElement(reactBootstrap.Col, { lg: "12" },
-        React__namespace.createElement("p", null, props.body),
-        React__namespace.createElement(reactBootstrap.Form.Label, { htmlFor: "loginInput" + props.modal }, props.modal === 'User Name' ? 'Email address' : 'User Name'),
-        React__namespace.createElement(reactBootstrap.Form.Control, { type: "text", id: "loginInput" + props.modal, className: "mb-4" }),
-        React__namespace.createElement(reactBootstrap.Button, { color: "primary", onClick: handleReminder, size: "lg" }, "Send Reminder")));
-};
-
-var Login = function () {
-    var _a = React.useState(""), showModal = _a[0], setShowModal = _a[1];
-    var handleToggleModal = function () { return setShowModal(""); };
-    return (React__namespace.createElement("div", { className: "content h-100" },
-        showModal === "username" && (React__namespace.createElement(ModalOverlay, { show: !!showModal, setShow: handleToggleModal, header: "Forgot User Name" },
-            React__namespace.createElement(ModalLogin, { modal: "Username", body: "Enter you email address to receive a User Name Reminder", endpoint: "" }))),
-        showModal === "password" && (React__namespace.createElement(ModalOverlay, { show: !!showModal, setShow: handleToggleModal, header: "Forgot Password" },
-            React__namespace.createElement(ModalLogin, { modal: "Password", body: "Enter your User Name to receive a password reset link at the email\r\n              address on file", endpoint: "" }))),
-        React__namespace.createElement(reactBootstrap.Row, { className: "login-container h-100 m-0" },
-            React__namespace.createElement(reactBootstrap.Col, { xs: 12, lg: 7, className: "h-100 p-0" },
-                React__namespace.createElement(reactBootstrap.Container, { fluid: true, className: "d-flex align-items-center justify-content-center h-100" },
-                    React__namespace.createElement(LoginForm, { loading: false, 
-                        // login={login}
-                        // error={error}
-                        setShowModal: setShowModal }))),
-            React__namespace.createElement(reactBootstrap.Col, { xs: 12, lg: 5, className: "h-100 px-0" },
-                React__namespace.createElement(LoginImage, { imgUrl: "https://cdn.orrprotection.com/netsite/login2.jpg", header: "WHAT IS NETSITE?", text: "NetSITE provides secure, online access to all critical information\r\n          related to any fire protection system at any facility or site\r\n          serviced by ORR" },
-                    React__namespace.createElement("h2", { className: "info-heading" }, "All Documentation Online..."),
-                    React__namespace.createElement("ul", { className: "documentation-list" },
-                        "for all fire protection systems, located in any facility across the country",
-                        React__namespace.createElement("li", null, "Inspections Report"),
-                        React__namespace.createElement("li", null, "Proposals/ Pricing"),
-                        React__namespace.createElement("li", null, "Invoices"),
-                        React__namespace.createElement("li", null, "System Drawings"),
-                        React__namespace.createElement("li", null, "Owner Manual's")),
-                    React__namespace.createElement("div", { className: "login-info-link" },
-                        React__namespace.createElement("div", { className: "login-info-link-hover" }),
-                        React__namespace.createElement("a", { href: process.env.REACT_APP_ORR_NETREPORT_URL }, "Learn more"),
-                        React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faArrowRight })))))));
-};
-
-var ModalForgotPassword = function () {
-    var handleReminder = function (type) {
-        console.log("Email with password been sent");
-    };
-    return (React__namespace.createElement(reactBootstrap.Col, { lg: "12" },
-        React__namespace.createElement("h3", null, "Password Reset"),
-        React__namespace.createElement("p", null, "Enter your User Name to receive a password reset link at the email address on file"),
-        React__namespace.createElement(reactBootstrap.Form.Label, { htmlFor: "inputPassword" }, "User Name"),
-        React__namespace.createElement(reactBootstrap.Form.Control, { type: "text", id: "inputUsername", className: "mb-4" }),
-        React__namespace.createElement(reactBootstrap.Button, { color: "primary", onClick: handleReminder, size: "lg" }, "Send Reminder")));
-};
-
 var MediaQuery = {
     phone: "(min-width: 320px) and (max-width: 568px)",
     tablet: "(min-width : 768px) and (max-width : 1024px)",
@@ -316,12 +223,58 @@ var IsPhoneProvider = function (props) {
     return (React__namespace.createElement(IsPhoneContext.Provider, { value: isPhone }, props.children));
 };
 
+var ModalOverlay = function (props) {
+    return (React__namespace.createElement(React__namespace.Fragment, null,
+        React__namespace.createElement(reactBootstrap.Modal, { className: "modal-card-overlay", onHide: props.setShow, show: props.show, centered: true },
+            React__namespace.createElement(reactBootstrap.Modal.Header, { closeButton: true, onHide: props.setShow }, props.header),
+            React__namespace.createElement(reactBootstrap.Modal.Body, null, props.children),
+            React__namespace.createElement(reactBootstrap.Modal.Footer, null))));
+};
+
 var NativeOverlay = function (props) {
     return (React__namespace.createElement(React__namespace.Fragment, null,
         React__namespace.createElement(reactBootstrap.Modal, { className: "modal-overlay", show: props.show, backdrop: "static" },
             React__namespace.createElement(reactBootstrap.Modal.Header, { closeButton: true, onHide: function () { return props.setShow(); } }, props.header),
             React__namespace.createElement(reactBootstrap.Modal.Body, null, props.children))));
 };
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
 
 var AlertCard = function (_a) {
     var header = _a.header, title = _a.title, text = _a.text, bgStyle = _a.bgStyle, textColor = _a.textColor;
@@ -489,7 +442,7 @@ var ButtonLoadingSpinner = function (props) {
 var ModalNoHeaderOverlay = function (props) {
     return (React__namespace.createElement(React__namespace.Fragment, null,
         React__namespace.createElement(reactBootstrap.Modal, { className: "modal-no-header", onHide: props.setShow, animation: false, size: props.size ? props.size : "lg", show: props.show, centered: true },
-            React__namespace.createElement(reactBootstrap.CloseButton, { onClick: props.setShow }),
+            React__namespace.createElement(reactBootstrap.CloseButton, { onClick: function () { return props.setShow(""); } }),
             React__namespace.createElement(reactBootstrap.Modal.Body, { className: "modal-body" }, props.children))));
 };
 
@@ -498,6 +451,36 @@ var ModalSuccess = function (props) {
         React__default['default'].createElement(reactFontawesome.FontAwesomeIcon, { className: "modal-success-icon", icon: freeSolidSvgIcons.faCheckCircle, size: "10x" }),
         React__default['default'].createElement("h2", { className: "mb-2" }, "Success!"),
         React__default['default'].createElement("p", null, props.text)));
+};
+
+var ForgotUsernameModal = function (_a) {
+    var loading = _a.loading, closeModal = _a.closeModal, status = _a.status, handleReminder = _a.handleReminder, showError = _a.showError;
+    var _b = React__namespace.useState(""), value = _b[0], setValue = _b[1];
+    return (React__namespace.createElement(reactBootstrap.Col, { className: "text-center d-flex flex-column align-items-center px-3 px-sm-5" },
+        React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faUserCog, size: "7x" }),
+        React__namespace.createElement("h3", { className: "mt-3 mb-1 font-weight-bold" }, "\"Retrieve User Name\""),
+        React__namespace.createElement("p", { className: "text-muted text-center mb-3" }, "Enter you email address in the form below and we will send the user name we can match to your email address"),
+        React__namespace.createElement(reactBootstrap.Form.Label, { className: "align-self-start" }, "Email Address"),
+        React__namespace.createElement(reactBootstrap.Form.Control, { className: "mb-2 text-muted", type: "text", id: "loginInputUsername", value: value, onChange: function (e) { return setValue(e.target.value); }, placeholder: "Email Address" }),
+        status && status !== "Success" ? showError() : null,
+        React__namespace.createElement("div", { className: "my-2 px-2 d-flex justify-content-around flex-column flex-sm-row w-sm-100" },
+            React__namespace.createElement(reactBootstrap.Button, { className: "mb-2 mb-sm-0 text-muted", variant: "white", onClick: function () { return closeModal(""); } }, "Cancel"),
+            React__namespace.createElement(LoadingButton, { isLoading: loading, defaultText: "Send reminder", loadingText: "Loading", onClick: function () { return handleReminder("username", value); } }))));
+};
+
+var ForgotPasswordModal = function (_a) {
+    var loading = _a.loading, closeModal = _a.closeModal, status = _a.status, handleReminder = _a.handleReminder, showError = _a.showError;
+    var _b = React__namespace.useState(""), value = _b[0], setValue = _b[1];
+    return (React__namespace.createElement(reactBootstrap.Col, { className: "text-center d-flex flex-column align-items-center px-3 px-sm-5" },
+        React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faUserLock, size: "7x" }),
+        React__namespace.createElement("h3", { className: "mt-3 mb-1 font-weight-bold" }, "Reset Password"),
+        React__namespace.createElement("p", { className: "text-muted text-center mb-3" }, "Enter your User Name to receive a password reset link at the email address on file"),
+        React__namespace.createElement(reactBootstrap.Form.Label, { className: "align-self-start" }, "User Name"),
+        React__namespace.createElement(reactBootstrap.Form.Control, { className: "mb-2 text-muted", type: "text", id: "loginInputPassword", value: value, onChange: function (e) { return setValue(e.target.value); }, placeholder: "User Name" }),
+        status && status !== "Success" ? showError() : null,
+        React__namespace.createElement("div", { className: "my-2 px-2 d-flex justify-content-around flex-column flex-sm-row w-sm-100" },
+            React__namespace.createElement(reactBootstrap.Button, { className: "mb-2 mb-sm-0 text-muted", variant: "white", onClick: function () { return closeModal(""); } }, "Cancel"),
+            React__namespace.createElement(LoadingButton, { isLoading: loading, defaultText: "Send reminder", loadingText: "Loading", onClick: function () { return handleReminder("password", value); } }))));
 };
 
 var Dropdowns = function (_a) {
@@ -519,14 +502,12 @@ exports.ButtonLoadingSpinner = ButtonLoadingSpinner;
 exports.ButtonSpinner = ButtonSpinner;
 exports.CenteredSpinner = CenteredSpinner;
 exports.Dropdowns = Dropdowns;
+exports.ForgotPasswordModal = ForgotPasswordModal;
+exports.ForgotUsernameModal = ForgotUsernameModal;
 exports.GetToday = GetToday;
 exports.IsPhoneProvider = IsPhoneProvider;
 exports.LoadingButton = LoadingButton;
 exports.Login = Login;
-exports.LoginForm = LoginForm;
-exports.LoginImage = LoginImage;
-exports.ModalForgotPassword = ModalForgotPassword;
-exports.ModalLogin = ModalLogin;
 exports.ModalNoHeaderOverlay = ModalNoHeaderOverlay;
 exports.ModalOverlay = ModalOverlay;
 exports.ModalSuccess = ModalSuccess;

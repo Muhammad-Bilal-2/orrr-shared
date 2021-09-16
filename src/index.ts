@@ -1,8 +1,4 @@
-import { Login, ILogin } from "./pages/login/Login";
-import { ModalForgotPassword } from "./pages/login/ModalForgotPassword";
-import { LoginForm } from "./pages/login/LoginForm";
-import { LoginImage } from "./pages/login/LoginImage";
-import { ModalLogin } from "./pages/login/ModalLogin";
+import { Login } from "./pages/login/Login";
 import { CenteredSpinner, ButtonSpinner } from "./Spinner";
 import {
   IsPhoneProvider,
@@ -36,6 +32,8 @@ import { BackButton } from "./Buttons/BackButton";
 import { ButtonLoadingSpinner } from "./Buttons/ButtonSpinner";
 import { ModalNoHeaderOverlay } from "./Overlays/ModalNoHeaderOverlay";
 import { ModalSuccess } from "./Overlays/ModalSuccess";
+import { ForgotUsernameModal } from "./Overlays/ForgotUsernameModal";
+import { ForgotPasswordModal } from "./Overlays/ForgotPasswordModal";
 import { Dropdowns } from "./DropDowns/DropDowns";
 
 export {
@@ -68,10 +66,7 @@ export {
   PasswordInput,
   BackButton,
   ButtonLoadingSpinner,
-  ModalForgotPassword,
-  LoginForm,
-  LoginImage,
-  ModalLogin,
-  ILogin,
+  ForgotUsernameModal,
+  ForgotPasswordModal,
   Dropdowns,
 };

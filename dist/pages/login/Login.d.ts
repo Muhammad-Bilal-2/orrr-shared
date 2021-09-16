@@ -1,11 +1,17 @@
 import * as React from "react";
-export interface AuthError {
+interface AuthError {
     message: string;
     details: object;
 }
+export interface ILoginData {
+    username: string;
+    password: string;
+}
 export interface ILogin {
-    login?: (username: string, password: string) => void;
-    loading?: boolean | undefined;
-    error?: AuthError | null;
+    handleSubmit: (values: ILoginData) => void | Promise<void>;
+    loading?: boolean;
+    error: AuthError | null;
+    setShowModal?: React.Dispatch<React.SetStateAction<string>>;
 }
 export declare const Login: React.FC<ILogin>;
+export {};
