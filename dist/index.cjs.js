@@ -398,13 +398,13 @@ var LoadingButton = function (_a) {
 };
 
 var SimpleCard = function (_a) {
-    var loading = _a.loading, header = _a.header, buttons = _a.buttons, isMobileView = _a.isMobileView, style = _a.style, bodyStyle = _a.bodyStyle, cardClass = _a.cardClass, headerClass = _a.headerClass, onClick = _a.onClick, children = _a.children; _a.className;
+    var loading = _a.loading, header = _a.header, buttons = _a.buttons, isMobileView = _a.isMobileView, style = _a.style, bodyStyle = _a.bodyStyle, cardClass = _a.cardClass, headerClass = _a.headerClass, onClick = _a.onClick, children = _a.children, bodyClass = _a.bodyClass;
     return (React__namespace.createElement(reactBootstrap.Card, { className: cardClass, style: style ? style : undefined, onClick: onClick },
         header && (React__namespace.createElement(reactBootstrap.Card.Header, { className: headerClass },
             React__namespace.createElement(reactBootstrap.Row, null,
                 React__namespace.createElement(reactBootstrap.Col, { xs: isMobileView ? 12 : 8 }, isMobileView ? (React__namespace.createElement("h3", { className: "card-title" }, header)) : (React__namespace.createElement("h2", { className: "card-title" }, header))),
                 buttons && React__namespace.createElement(reactBootstrap.Col, null, buttons)))),
-        children && (React__namespace.createElement(reactBootstrap.Card.Body, { style: bodyStyle ? bodyStyle : undefined },
+        children && (React__namespace.createElement(reactBootstrap.Card.Body, { className: bodyClass, style: bodyStyle ? bodyStyle : undefined },
             React__namespace.createElement(CenteredSpinner, { loading: loading, size: isMobileView ? "sm" : "md" }, children)))));
 };
 

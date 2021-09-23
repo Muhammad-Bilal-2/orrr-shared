@@ -9,7 +9,7 @@ interface ISimpleCardProps {
     cardClass?: string;
     headerClass?: string;
     onClick?: React.MouseEventHandler<HTMLDivElement>;
-    className?: string;
+    bodyClass?: string;
 }
 export declare const SimpleCard: React.FC<ISimpleCardProps>;
 export {};
