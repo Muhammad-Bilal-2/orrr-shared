@@ -11,7 +11,7 @@ interface ISimpleCardProps {
   cardClass?: string;
   headerClass?: string;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
-  className?: string;
+  bodyClass?: string;
 }
 
 export const SimpleCard: React.FC<ISimpleCardProps> = ({
@@ -25,7 +25,7 @@ export const SimpleCard: React.FC<ISimpleCardProps> = ({
   headerClass,
   onClick,
   children,
-  className,
+  bodyClass,
 }) => {
   return (
     <Card
@@ -48,7 +48,7 @@ export const SimpleCard: React.FC<ISimpleCardProps> = ({
         </Card.Header>
       )}
       {children && (
-        <Card.Body style={bodyStyle ? bodyStyle : undefined}>
+        <Card.Body className={bodyClass} style={bodyStyle ? bodyStyle : undefined}>
           <CenteredSpinner loading={loading} size={isMobileView ? "sm" : "md"}>
             {children}
           </CenteredSpinner>
