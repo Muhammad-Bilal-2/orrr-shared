@@ -380,15 +380,15 @@ var SimpleCard = function (_a) {
 };
 
 var PasswordInput = function (_a) {
-    var label = _a.label, name = _a.name, isInvalid = _a.isInvalid, error = _a.error, onChange = _a.onChange, value = _a.value, disabled = _a.disabled, placeholder = _a.placeholder;
+    var label = _a.label, name = _a.name, isInvalid = _a.isInvalid, error = _a.error, onChange = _a.onChange, value = _a.value, disabled = _a.disabled, placeholder = _a.placeholder, inputGroupCustomClass = _a.inputGroupCustomClass, inputPasswordClass = _a.inputPasswordClass;
     var _b = React__default.useState(false), passwordVisible = _b[0], setPasswordVisible = _b[1];
     var togglePassword = function () {
         setPasswordVisible(!passwordVisible);
     };
     return (React__default.createElement(React__default.Fragment, null,
         label && React__default.createElement(Form.Label, null, label),
-        React__default.createElement(InputGroup, null,
-            React__default.createElement(Form.Control, { name: name, placeholder: placeholder, isInvalid: isInvalid, value: value, type: passwordVisible ? "text" : "password", onChange: onChange, disabled: disabled }),
+        React__default.createElement(InputGroup, { className: inputGroupCustomClass },
+            React__default.createElement(Form.Control, { name: name, placeholder: placeholder, isInvalid: isInvalid, value: value, type: passwordVisible ? "text" : "password", onChange: onChange, disabled: disabled, className: inputPasswordClass }),
             React__default.createElement(InputGroup.Append, { className: "togglePasswordHolder", onClick: togglePassword },
                 React__default.createElement(InputGroup.Text, { className: passwordVisible ? "passwordInputActive" : "passwordInput" },
                     React__default.createElement(FontAwesomeIcon, { icon: faEye }))),

@@ -8,6 +8,8 @@ interface IPasswordInputProps {
     error?: string;
     disabled?: boolean;
     placeholder?: string;
+    inputGroupCustomClass?: string;
+    inputPasswordClass?: string;
 }
 export declare const PasswordInput: React.FC<IPasswordInputProps>;
 export {};

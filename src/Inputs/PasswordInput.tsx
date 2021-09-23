@@ -12,6 +12,8 @@ interface IPasswordInputProps {
   error?: string;
   disabled?: boolean;
   placeholder?: string;
+  inputGroupCustomClass?: string;
+  inputPasswordClass?: string;
 }
 
 export const PasswordInput: React.FC<IPasswordInputProps> = ({
@@ -23,6 +25,8 @@ export const PasswordInput: React.FC<IPasswordInputProps> = ({
   value,
   disabled,
   placeholder,
+  inputGroupCustomClass,
+  inputPasswordClass,
 }) => {
   const [passwordVisible, setPasswordVisible] = React.useState<boolean>(false);
   const togglePassword = () => {
@@ -32,7 +36,7 @@ export const PasswordInput: React.FC<IPasswordInputProps> = ({
   return (
     <>
       {label && <Form.Label>{label}</Form.Label>}
-      <InputGroup>
+      <InputGroup className={inputGroupCustomClass}>
         <Form.Control
           name={name}
           placeholder={placeholder}
@@ -41,6 +45,7 @@ export const PasswordInput: React.FC<IPasswordInputProps> = ({
           type={passwordVisible ? "text" : "password"}
           onChange={onChange}
           disabled={disabled}
+          className={inputPasswordClass}
         />
         <InputGroup.Append
           className="togglePasswordHolder"
