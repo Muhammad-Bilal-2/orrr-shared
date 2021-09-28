@@ -44,7 +44,7 @@ export const ForgotUsernameModal: React.FC<IModalLoginProps> = ({
           isLoading={loading}
           defaultText={"Send reminder"}
           loadingText={"Loading"}
-          onClick={() => handleReminder("username", value)}
+          onClick={() => handleReminder(value)}
         />
       </div>
     </Col>

@@ -435,7 +435,7 @@ var ForgotUsernameModal = function (_a) {
         status && status !== "Success" ? showError() : null,
         React.createElement("div", { className: "my-2 px-2 d-flex justify-content-around flex-column flex-sm-row w-sm-100" },
             React.createElement(Button, { className: "mb-2 mb-sm-0 text-muted", variant: "white", onClick: function () { return closeModal(""); } }, "Cancel"),
-            React.createElement(LoadingButton, { isLoading: loading, defaultText: "Send reminder", loadingText: "Loading", onClick: function () { return handleReminder("username", value); } }))));
+            React.createElement(LoadingButton, { isLoading: loading, defaultText: "Send reminder", loadingText: "Loading", onClick: function () { return handleReminder(value); } }))));
 };
 
 var ForgotPasswordModal = function (_a) {
@@ -450,7 +450,7 @@ var ForgotPasswordModal = function (_a) {
         status && status !== "Success" ? showError() : null,
         React.createElement("div", { className: "my-2 px-2 d-flex justify-content-around flex-column flex-sm-row w-sm-100" },
             React.createElement(Button, { className: "mb-2 mb-sm-0 text-muted", variant: "white", onClick: function () { return closeModal(""); } }, "Cancel"),
-            React.createElement(LoadingButton, { isLoading: loading, defaultText: "Send reminder", loadingText: "Loading", onClick: function () { return handleReminder("password", value); } }))));
+            React.createElement(LoadingButton, { isLoading: loading, defaultText: "Send reminder", loadingText: "Loading", onClick: function () { return handleReminder(value); } }))));
 };
 
 var Dropdowns = function (_a) {
