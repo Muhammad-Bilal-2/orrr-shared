@@ -35,6 +35,7 @@ import { ModalSuccess } from "./Overlays/ModalSuccess";
 import { ForgotUsernameModal } from "./Overlays/ForgotUsernameModal";
 import { ForgotPasswordModal } from "./Overlays/ForgotPasswordModal";
 import { Dropdowns } from "./DropDowns/DropDowns";
+import { Tabs } from "./Tabs/Tabs";
 
 export {
   CenteredSpinner,
@@ -69,4 +70,5 @@ export {
   ForgotUsernameModal,
   ForgotPasswordModal,
   Dropdowns,
+  Tabs,
 };

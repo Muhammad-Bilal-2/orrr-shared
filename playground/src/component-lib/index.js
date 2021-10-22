@@ -1,7 +1,7 @@
 /* eslint-disable */
 import * as React from 'react';
-import React__default, { useState, useEffect, createContext, useContext, useRef } from 'react';
-import { Form, Col, Card, FormControl, Row, Container, Spinner, Modal, Button, InputGroup, CloseButton } from 'react-bootstrap';
+import React__default, { useState, useEffect, createContext, useContext, useRef, useMemo } from 'react';
+import { Form, Col, Card, FormControl, Row, Container, Spinner, Modal, Button, InputGroup, CloseButton, Tabs as Tabs$1, Tab } from 'react-bootstrap';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { faGreaterThan, faArrowRight, faEye, faLessThan, faCheckCircle, faUserCog, faUserLock } from '@fortawesome/free-solid-svg-icons';
@@ -467,4 +467,24 @@ var Dropdowns = function (_a) {
                     text ? text : null)); }))) : (items && (React__default.createElement("option", { key: items[0].key, value: items[0].key }, items[0].value))))));
 };
 
-export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, Dropdowns, ForgotPasswordModal, ForgotUsernameModal, GetToday, IsPhoneProvider, LoadingButton, Login, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };
+var TAB_SEARCH_KEY = "tab";
+var Tabs = function (_a) {
+    var tabs = _a.tabs;
+    var history = useHistory();
+    var orderedTabs = useMemo(function () { return OrderBy(tabs, "order"); }, [tabs]);
+    var search = window.location.search;
+    var searchParams = useMemo(function () { return new URLSearchParams(search); }, [search]);
+    var urlKey = useMemo(function () {
+        var searchKey = searchParams.get(TAB_SEARCH_KEY);
+        return searchKey || orderedTabs[0].key;
+    }, [searchParams, orderedTabs]);
+    var updateKey = function (key) {
+        searchParams.set(TAB_SEARCH_KEY, key);
+        history.replace({ search: searchParams.toString() });
+    };
+    return (React.createElement(Tabs$1, { id: "custom-tabs", activeKey: urlKey, onSelect: function (k) { return updateKey(k); }, className: "custom-tabs mb-0 p-0" }, orderedTabs === null || orderedTabs === void 0 ? void 0 : orderedTabs.map(function (singleTab) {
+        return (React.createElement(Tab, { className: "custom-tab-link", eventKey: singleTab.key, title: singleTab.name, key: singleTab.key }, singleTab.component));
+    })));
+};
+
+export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, Dropdowns, ForgotPasswordModal, ForgotUsernameModal, GetToday, IsPhoneProvider, LoadingButton, Login, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, Tabs, checkValuesData, extract, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };

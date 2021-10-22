@@ -496,6 +496,26 @@ var Dropdowns = function (_a) {
                     text ? text : null)); }))) : (items && (React__default['default'].createElement("option", { key: items[0].key, value: items[0].key }, items[0].value))))));
 };
 
+var TAB_SEARCH_KEY = "tab";
+var Tabs = function (_a) {
+    var tabs = _a.tabs;
+    var history = reactRouterDom.useHistory();
+    var orderedTabs = React.useMemo(function () { return OrderBy(tabs, "order"); }, [tabs]);
+    var search = window.location.search;
+    var searchParams = React.useMemo(function () { return new URLSearchParams(search); }, [search]);
+    var urlKey = React.useMemo(function () {
+        var searchKey = searchParams.get(TAB_SEARCH_KEY);
+        return searchKey || orderedTabs[0].key;
+    }, [searchParams, orderedTabs]);
+    var updateKey = function (key) {
+        searchParams.set(TAB_SEARCH_KEY, key);
+        history.replace({ search: searchParams.toString() });
+    };
+    return (React__namespace.createElement(reactBootstrap.Tabs, { id: "custom-tabs", activeKey: urlKey, onSelect: function (k) { return updateKey(k); }, className: "custom-tabs mb-0 p-0" }, orderedTabs === null || orderedTabs === void 0 ? void 0 : orderedTabs.map(function (singleTab) {
+        return (React__namespace.createElement(reactBootstrap.Tab, { className: "custom-tab-link", eventKey: singleTab.key, title: singleTab.name, key: singleTab.key }, singleTab.component));
+    })));
+};
+
 exports.AlertWrapped = AlertWrapped;
 exports.BackButton = BackButton;
 exports.ButtonLoadingSpinner = ButtonLoadingSpinner;
@@ -519,6 +539,7 @@ exports.PasswordInput = PasswordInput;
 exports.SimpleCard = SimpleCard;
 exports.StringOrDefault = StringOrDefault;
 exports.StringToShortDate = StringToShortDate;
+exports.Tabs = Tabs;
 exports.checkValuesData = checkValuesData;
 exports.extract = extract;
 exports.getUniqueBy = getUniqueBy;

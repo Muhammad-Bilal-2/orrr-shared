@@ -11,9 +11,9 @@ function App() {
 
   return (
     <>
-      {/* <h3 className="id">123</h3> */}
+      <h3 className="id">123</h3>
       <Login login={() => console.log("login")} />
-      <ForgotPasswordModal />
+      {/* <ForgotPasswordModal /> */}
     </>
   );
 }

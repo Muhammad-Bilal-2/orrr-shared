@@ -17,4 +17,5 @@ import { ModalSuccess } from "./Overlays/ModalSuccess";
 import { ForgotUsernameModal } from "./Overlays/ForgotUsernameModal";
 import { ForgotPasswordModal } from "./Overlays/ForgotPasswordModal";
 import { Dropdowns } from "./DropDowns/DropDowns";
-export { CenteredSpinner, IsPhoneProvider, useIsPhoneContext, ButtonSpinner, AlertWrapped, ModalOverlay, NativeOverlay, ModalSuccess, ModalNoHeaderOverlay, NumberBoolToText, StringToShortDate, StringOrDefault, NumberOrDefault, notEmpty, isNotNull, GetToday, groupBy, extract, OrderBy, checkValuesData, nameOf, getUniqueBy, useOnce, Login, LoadingButton, SimpleCard, PasswordInput, BackButton, ButtonLoadingSpinner, ForgotUsernameModal, ForgotPasswordModal, Dropdowns, };
+import { Tabs } from "./Tabs/Tabs";
+export { CenteredSpinner, IsPhoneProvider, useIsPhoneContext, ButtonSpinner, AlertWrapped, ModalOverlay, NativeOverlay, ModalSuccess, ModalNoHeaderOverlay, NumberBoolToText, StringToShortDate, StringOrDefault, NumberOrDefault, notEmpty, isNotNull, GetToday, groupBy, extract, OrderBy, checkValuesData, nameOf, getUniqueBy, useOnce, Login, LoadingButton, SimpleCard, PasswordInput, BackButton, ButtonLoadingSpinner, ForgotUsernameModal, ForgotPasswordModal, Dropdowns, Tabs, };
