@@ -4,7 +4,9 @@ export function notEmpty<TValue>(
   return value !== null && value !== undefined;
 }
 
-export function isNotNull<T>(value: (T | null | undefined)[] | null | undefined) {
+export function isNotNull<T>(
+  value: (T | null | undefined)[] | null | undefined
+) {
   let array = [] as T[];
   if (value) {
     array = value.filter(notEmpty);
@@ -76,15 +78,75 @@ export function checkValuesData<T>(array: T[]): T[] {
 }
 
 type valueOf<T> = T[keyof T];
-export function nameOf<T, V extends T[keyof T]>(f: (x: T) => V): valueOf<{ [K in keyof T]: T[K] extends V ? K : never }>;
+export function nameOf<T, V extends T[keyof T]>(
+  f: (x: T) => V
+): valueOf<{ [K in keyof T]: T[K] extends V ? K : never }>;
 export function nameOf(f: (x: any) => any): keyof any {
-    var p = new Proxy({}, {
-        get: (target, key) => key
-    })
-    return f(p);
+  var p = new Proxy(
+    {},
+    {
+      get: (target, key) => key,
+    }
+  );
+  return f(p);
 }
 
-export function getUniqueBy<T extends {[key:string]:any}>(arr:T[], prop:string) {
+export function getUniqueBy<T extends { [key: string]: any }>(
+  arr: T[],
+  prop: string
+) {
   const set = new Set();
-  return arr.filter(o => !set.has(o[prop]) && set.add(o[prop]));
-};
+  return arr.filter((o) => !set.has(o[prop]) && set.add(o[prop]));
+}
+
+/* export const multipleGroupByArray = <T>(dataArray:T[], groupPropertyArray:(item:T|{[key:string]:string})=>(string|null)[]) => {
+
+  //get properties
+  const properties = getPropertyName(dataArray[0], groupPropertyArray) as string[];
+  const groups:{[key:string]:any} = {};
+
+  let test = dataArray.map((item)=>{
+    return nestedGroupBy(item, properties, groups)
+  })
+
+
+/*   const test = dataArray.reduce((accum, current) => {
+    let curr = current as {[key:string]:any};
+    let groups = properties.reduce((store, item)=>{
+      var group = curr[item];
+      store[group] = store[group] || [];
+      store[group].push(item);
+      return store;
+    },{} as {[key:string]:any});
+    groups.array.forEach(element => {
+      accum[element] = accum[element] || [];
+
+    });
+      return accum;
+  }, groups) 
+
+    dataArray.forEach(item => {
+        const group = JSON.stringify(properties);
+        groups[group] = groups[group] || [];
+        groups[group].push(item);
+    });
+    return Object.keys(groups).map(function(group) {
+        return groups[group];
+    });
+} */
+
+/* const nestedGroupBy=(item:{[key:string]:any}, properties:string[], groupedObj:{[key:string]:any}) : {[key:string]:any}=> {
+  
+    let group = {} as {[key:string]:any};
+    let currentProp = properties[0];
+    let propName = item[currentProp];
+
+    if(properties.length > 1){
+      let remainingProps = properties.slice(1);
+      let value = nestedGroupBy(item, remainingProps);
+      group[propName] = value
+      return group;
+    }
+    group[propName] = item
+    return group;
+} */

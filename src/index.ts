@@ -36,6 +36,8 @@ import { ForgotUsernameModal } from "./Overlays/ForgotUsernameModal";
 import { ForgotPasswordModal } from "./Overlays/ForgotPasswordModal";
 import { Dropdowns } from "./DropDowns/DropDowns";
 import { Tabs } from "./Tabs/Tabs";
+import { getDate } from "./utilities/date";
+import { getPropertyName } from "./utilities/object.properties";
 
 export {
   CenteredSpinner,
@@ -71,4 +73,6 @@ export {
   ForgotPasswordModal,
   Dropdowns,
   Tabs,
+  getDate,
+  getPropertyName,
 };

@@ -381,7 +381,7 @@ function checkValuesData(array) {
 }
 function nameOf(f) {
     var p = new Proxy({}, {
-        get: function (target, key) { return key; }
+        get: function (target, key) { return key; },
     });
     return f(p);
 }
@@ -389,6 +389,56 @@ function getUniqueBy(arr, prop) {
     var set = new Set();
     return arr.filter(function (o) { return !set.has(o[prop]) && set.add(o[prop]); });
 }
+/* export const multipleGroupByArray = <T>(dataArray:T[], groupPropertyArray:(item:T|{[key:string]:string})=>(string|null)[]) => {
+
+  //get properties
+  const properties = getPropertyName(dataArray[0], groupPropertyArray) as string[];
+  const groups:{[key:string]:any} = {};
+
+  let test = dataArray.map((item)=>{
+    return nestedGroupBy(item, properties, groups)
+  })
+
+
+/*   const test = dataArray.reduce((accum, current) => {
+    let curr = current as {[key:string]:any};
+    let groups = properties.reduce((store, item)=>{
+      var group = curr[item];
+      store[group] = store[group] || [];
+      store[group].push(item);
+      return store;
+    },{} as {[key:string]:any});
+    groups.array.forEach(element => {
+      accum[element] = accum[element] || [];
+
+    });
+      return accum;
+  }, groups)
+
+    dataArray.forEach(item => {
+        const group = JSON.stringify(properties);
+        groups[group] = groups[group] || [];
+        groups[group].push(item);
+    });
+    return Object.keys(groups).map(function(group) {
+        return groups[group];
+    });
+} */
+/* const nestedGroupBy=(item:{[key:string]:any}, properties:string[], groupedObj:{[key:string]:any}) : {[key:string]:any}=> {
+  
+    let group = {} as {[key:string]:any};
+    let currentProp = properties[0];
+    let propName = item[currentProp];
+
+    if(properties.length > 1){
+      let remainingProps = properties.slice(1);
+      let value = nestedGroupBy(item, remainingProps);
+      group[propName] = value
+      return group;
+    }
+    group[propName] = item
+    return group;
+} */
 
 var LoadingButton = function (_a) {
     var isLoading = _a.isLoading, defaultText = _a.defaultText, loadingText = _a.loadingText, onClick = _a.onClick, type = _a.type;
@@ -516,6 +566,22 @@ var Tabs = function (_a) {
     })));
 };
 
+//gives date prior to current date
+var getDate = function (duration) {
+    var dateObj = new Date();
+    var requiredDate = dateObj.setMonth(dateObj.getMonth() - parseInt(duration));
+    var ISO_date = new Date(requiredDate).toISOString();
+    return ISO_date;
+};
+
+var getPropertyName = function (obj, expression) {
+    var res = {};
+    Object.keys(obj).forEach(function (k) {
+        res[k] = k;
+    });
+    return expression(res);
+};
+
 exports.AlertWrapped = AlertWrapped;
 exports.BackButton = BackButton;
 exports.ButtonLoadingSpinner = ButtonLoadingSpinner;
@@ -542,6 +608,8 @@ exports.StringToShortDate = StringToShortDate;
 exports.Tabs = Tabs;
 exports.checkValuesData = checkValuesData;
 exports.extract = extract;
+exports.getDate = getDate;
+exports.getPropertyName = getPropertyName;
 exports.getUniqueBy = getUniqueBy;
 exports.groupBy = groupBy;
 exports.isNotNull = isNotNull;
