@@ -548,20 +548,21 @@ var Dropdowns = function (_a) {
 
 var TAB_SEARCH_KEY = "tab";
 var Tabs = function (_a) {
-    var tabs = _a.tabs;
+    var tabs = _a.tabs, uniqueKey = _a.uniqueKey;
     var history = reactRouterDom.useHistory();
     var orderedTabs = React.useMemo(function () { return OrderBy(tabs, "order"); }, [tabs]);
     var search = window.location.search;
     var searchParams = React.useMemo(function () { return new URLSearchParams(search); }, [search]);
+    var uniqueSearchKey = React.useMemo(function () { return uniqueKey + "-" + TAB_SEARCH_KEY; }, [uniqueKey]);
     var urlKey = React.useMemo(function () {
-        var searchKey = searchParams.get(TAB_SEARCH_KEY);
+        var searchKey = searchParams.get(uniqueSearchKey);
         return searchKey || orderedTabs[0].key;
-    }, [searchParams, orderedTabs]);
+    }, [searchParams, orderedTabs, uniqueSearchKey]);
     var updateKey = function (key) {
-        searchParams.set(TAB_SEARCH_KEY, key);
+        searchParams.set(uniqueSearchKey, key);
         history.replace({ search: searchParams.toString() });
     };
-    return (React__namespace.createElement(reactBootstrap.Tabs, { id: "custom-tabs", activeKey: urlKey, onSelect: function (k) { return updateKey(k); }, className: "custom-tabs mb-0 p-0" }, orderedTabs === null || orderedTabs === void 0 ? void 0 : orderedTabs.map(function (singleTab) {
+    return (React__namespace.createElement(reactBootstrap.Tabs, { id: uniqueKey, activeKey: urlKey, onSelect: function (k) { return updateKey(k); }, className: "custom-tabs mb-0 p-0" }, orderedTabs === null || orderedTabs === void 0 ? void 0 : orderedTabs.map(function (singleTab) {
         return (React__namespace.createElement(reactBootstrap.Tab, { tabClassName: "custom-tab-link", eventKey: singleTab.key, title: singleTab.name, key: singleTab.key },
             React__namespace.createElement(singleTab.component, null)));
     })));

@@ -7,30 +7,33 @@ import { ITabsState } from "./TabsState";
 
 interface ITabsProps {
   tabs: ITabsState[];
+  uniqueKey: string;
 }
 
 const TAB_SEARCH_KEY = "tab";
 
-export const Tabs: React.FC<ITabsProps> = ({ tabs }) => {
+export const Tabs: React.FC<ITabsProps> = ({ tabs, uniqueKey }) => {
   const history = useHistory();
   const orderedTabs = useMemo(() => OrderBy<ITabsState>(tabs, "order"), [tabs]);
 
   const search = window.location.search;
   const searchParams = useMemo(() => new URLSearchParams(search), [search]);
 
+  const uniqueSearchKey = useMemo(() => `${uniqueKey}-${TAB_SEARCH_KEY}`,[uniqueKey]);
+
   const urlKey = useMemo(() => {
-    let searchKey = searchParams.get(TAB_SEARCH_KEY);
+    let searchKey = searchParams.get(uniqueSearchKey);
     return searchKey || orderedTabs[0].key;
-  }, [searchParams, orderedTabs]);
+  }, [searchParams, orderedTabs, uniqueSearchKey]);
 
   const updateKey = (key: string) => {
-    searchParams.set(TAB_SEARCH_KEY, key);
+    searchParams.set(uniqueSearchKey, key);
     history.replace({ search: searchParams.toString() });
   };
 
   return (
     <TabsBootstrap
-      id="custom-tabs"
+      id={uniqueKey}
       activeKey={urlKey}
       onSelect={(k) => updateKey(k!)}
       className="custom-tabs mb-0 p-0"
