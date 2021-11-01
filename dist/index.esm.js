@@ -1,5 +1,5 @@
 import * as React from 'react';
-import React__default, { useState, useEffect, createContext, useContext, useRef, useMemo } from 'react';
+import React__default, { useState, useEffect, createContext, useContext, useRef, useMemo, useCallback } from 'react';
 import { Form, Col, Card, FormControl, Row, Container, Spinner, Modal, Button, InputGroup, CloseButton, Tabs as Tabs$1, Tab } from 'react-bootstrap';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
@@ -532,7 +532,8 @@ var Tabs = function (_a) {
         history.replace({ search: searchParams.toString() });
     };
     return (React.createElement(Tabs$1, { id: "custom-tabs", activeKey: urlKey, onSelect: function (k) { return updateKey(k); }, className: "custom-tabs mb-0 p-0" }, orderedTabs === null || orderedTabs === void 0 ? void 0 : orderedTabs.map(function (singleTab) {
-        return (React.createElement(Tab, { className: "custom-tab-link", eventKey: singleTab.key, title: singleTab.name, key: singleTab.key }, singleTab.component));
+        return (React.createElement(Tab, { tabClassName: "custom-tab-link", eventKey: singleTab.key, title: singleTab.name, key: singleTab.key },
+            React.createElement(singleTab.component, null)));
     })));
 };
 
@@ -552,4 +553,29 @@ var getPropertyName = function (obj, expression) {
     return expression(res);
 };
 
-export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, Dropdowns, ForgotPasswordModal, ForgotUsernameModal, GetToday, IsPhoneProvider, LoadingButton, Login, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, Tabs, checkValuesData, extract, getDate, getPropertyName, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useOnce };
+function useLocalStorage(key, initialValue) {
+    if (initialValue === void 0) { initialValue = ''; }
+    var _a = useState(function () { return window.localStorage.getItem(key) || initialValue; }), value = _a[0], setValue = _a[1];
+    var setItem = function (newValue) {
+        setValue(newValue);
+        window.localStorage.setItem(key, newValue);
+    };
+    useEffect(function () {
+        var newValue = window.localStorage.getItem(key);
+        if (value !== newValue) {
+            setValue(newValue || initialValue);
+        }
+    }, [key, value, initialValue]);
+    var handleStorage = useCallback(function (event) {
+        if (event.key === key && event.newValue !== value) {
+            setValue(event.newValue || initialValue);
+        }
+    }, [value, key, initialValue]);
+    useEffect(function () {
+        window.addEventListener('storage', handleStorage);
+        return function () { return window.removeEventListener('storage', handleStorage); };
+    }, [handleStorage]);
+    return [value, setItem];
+}
+
+export { AlertWrapped, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, Dropdowns, ForgotPasswordModal, ForgotUsernameModal, GetToday, IsPhoneProvider, LoadingButton, Login, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, Tabs, checkValuesData, extract, getDate, getPropertyName, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useLocalStorage, useOnce };

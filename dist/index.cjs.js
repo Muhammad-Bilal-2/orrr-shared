@@ -562,7 +562,8 @@ var Tabs = function (_a) {
         history.replace({ search: searchParams.toString() });
     };
     return (React__namespace.createElement(reactBootstrap.Tabs, { id: "custom-tabs", activeKey: urlKey, onSelect: function (k) { return updateKey(k); }, className: "custom-tabs mb-0 p-0" }, orderedTabs === null || orderedTabs === void 0 ? void 0 : orderedTabs.map(function (singleTab) {
-        return (React__namespace.createElement(reactBootstrap.Tab, { className: "custom-tab-link", eventKey: singleTab.key, title: singleTab.name, key: singleTab.key }, singleTab.component));
+        return (React__namespace.createElement(reactBootstrap.Tab, { tabClassName: "custom-tab-link", eventKey: singleTab.key, title: singleTab.name, key: singleTab.key },
+            React__namespace.createElement(singleTab.component, null)));
     })));
 };
 
@@ -581,6 +582,31 @@ var getPropertyName = function (obj, expression) {
     });
     return expression(res);
 };
+
+function useLocalStorage(key, initialValue) {
+    if (initialValue === void 0) { initialValue = ''; }
+    var _a = React.useState(function () { return window.localStorage.getItem(key) || initialValue; }), value = _a[0], setValue = _a[1];
+    var setItem = function (newValue) {
+        setValue(newValue);
+        window.localStorage.setItem(key, newValue);
+    };
+    React.useEffect(function () {
+        var newValue = window.localStorage.getItem(key);
+        if (value !== newValue) {
+            setValue(newValue || initialValue);
+        }
+    }, [key, value, initialValue]);
+    var handleStorage = React.useCallback(function (event) {
+        if (event.key === key && event.newValue !== value) {
+            setValue(event.newValue || initialValue);
+        }
+    }, [value, key, initialValue]);
+    React.useEffect(function () {
+        window.addEventListener('storage', handleStorage);
+        return function () { return window.removeEventListener('storage', handleStorage); };
+    }, [handleStorage]);
+    return [value, setItem];
+}
 
 exports.AlertWrapped = AlertWrapped;
 exports.BackButton = BackButton;
@@ -616,4 +642,5 @@ exports.isNotNull = isNotNull;
 exports.nameOf = nameOf;
 exports.notEmpty = notEmpty;
 exports.useIsPhoneContext = useIsPhoneContext;
+exports.useLocalStorage = useLocalStorage;
 exports.useOnce = useOnce;

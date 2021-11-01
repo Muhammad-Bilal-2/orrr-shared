@@ -20,4 +20,5 @@ import { Dropdowns } from "./DropDowns/DropDowns";
 import { Tabs } from "./Tabs/Tabs";
 import { getDate } from "./utilities/date";
 import { getPropertyName } from "./utilities/object.properties";
-export { CenteredSpinner, IsPhoneProvider, useIsPhoneContext, ButtonSpinner, AlertWrapped, ModalOverlay, NativeOverlay, ModalSuccess, ModalNoHeaderOverlay, NumberBoolToText, StringToShortDate, StringOrDefault, NumberOrDefault, notEmpty, isNotNull, GetToday, groupBy, extract, OrderBy, checkValuesData, nameOf, getUniqueBy, useOnce, Login, LoadingButton, SimpleCard, PasswordInput, BackButton, ButtonLoadingSpinner, ForgotUsernameModal, ForgotPasswordModal, Dropdowns, Tabs, getDate, getPropertyName, };
+import useLocalStorage from "./utilities/useLocalStorage";
+export { CenteredSpinner, IsPhoneProvider, useIsPhoneContext, ButtonSpinner, AlertWrapped, ModalOverlay, NativeOverlay, ModalSuccess, ModalNoHeaderOverlay, NumberBoolToText, StringToShortDate, StringOrDefault, NumberOrDefault, notEmpty, isNotNull, GetToday, groupBy, extract, OrderBy, checkValuesData, nameOf, getUniqueBy, useOnce, useLocalStorage, Login, LoadingButton, SimpleCard, PasswordInput, BackButton, ButtonLoadingSpinner, ForgotUsernameModal, ForgotPasswordModal, Dropdowns, Tabs, getDate, getPropertyName, };

@@ -38,6 +38,7 @@ import { Dropdowns } from "./DropDowns/DropDowns";
 import { Tabs } from "./Tabs/Tabs";
 import { getDate } from "./utilities/date";
 import { getPropertyName } from "./utilities/object.properties";
+import useLocalStorage from "./utilities/useLocalStorage";
 
 export {
   CenteredSpinner,
@@ -63,6 +64,7 @@ export {
   nameOf,
   getUniqueBy,
   useOnce,
+  useLocalStorage,
   Login,
   LoadingButton,
   SimpleCard,
