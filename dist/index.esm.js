@@ -518,7 +518,7 @@ var Dropdowns = function (_a) {
 
 var TAB_SEARCH_KEY = "tab";
 var Tabs = function (_a) {
-    var tabs = _a.tabs, uniqueKey = _a.uniqueKey;
+    var tabs = _a.tabs, uniqueKey = _a.uniqueKey, mountOnEnter = _a.mountOnEnter, unmountOnExit = _a.unmountOnExit;
     var history = useHistory();
     var orderedTabs = useMemo(function () { return OrderBy(tabs, "order"); }, [tabs]);
     var search = window.location.search;
@@ -532,7 +532,7 @@ var Tabs = function (_a) {
         searchParams.set(uniqueSearchKey, key);
         history.replace({ search: searchParams.toString() });
     };
-    return (React.createElement(Tabs$1, { id: uniqueKey, activeKey: urlKey, onSelect: function (k) { return updateKey(k); }, className: "custom-tabs mb-0 p-0" }, orderedTabs === null || orderedTabs === void 0 ? void 0 : orderedTabs.map(function (singleTab) {
+    return (React.createElement(Tabs$1, { id: uniqueKey, activeKey: urlKey, onSelect: function (k) { return updateKey(k); }, className: "custom-tabs mb-0 p-0", mountOnEnter: mountOnEnter, unmountOnExit: unmountOnExit }, orderedTabs === null || orderedTabs === void 0 ? void 0 : orderedTabs.map(function (singleTab) {
         return (React.createElement(Tab, { tabClassName: "custom-tab-link", eventKey: singleTab.key, title: singleTab.name, key: singleTab.key },
             React.createElement(singleTab.component, null)));
     })));
