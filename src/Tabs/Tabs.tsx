@@ -8,11 +8,13 @@ import { ITabsState } from "./TabsState";
 interface ITabsProps {
   tabs: ITabsState[];
   uniqueKey: string;
+  mountOnEnter?:boolean;
+  unmountOnExit?:boolean;
 }
 
 const TAB_SEARCH_KEY = "tab";
 
-export const Tabs: React.FC<ITabsProps> = ({ tabs, uniqueKey }) => {
+export const Tabs: React.FC<ITabsProps> = ({ tabs, uniqueKey, mountOnEnter, unmountOnExit }) => {
   const history = useHistory();
   const orderedTabs = useMemo(() => OrderBy<ITabsState>(tabs, "order"), [tabs]);
 
@@ -37,6 +39,8 @@ export const Tabs: React.FC<ITabsProps> = ({ tabs, uniqueKey }) => {
       activeKey={urlKey}
       onSelect={(k) => updateKey(k!)}
       className="custom-tabs mb-0 p-0"
+      mountOnEnter={mountOnEnter}
+      unmountOnExit={unmountOnExit}
     >
       {orderedTabs?.map((singleTab) => {
         return (
