@@ -39,7 +39,15 @@ import { Tabs } from "./Tabs/Tabs";
 import { getDate } from "./utilities/date";
 import { getPropertyName } from "./utilities/object.properties";
 import useLocalStorage from "./utilities/useLocalStorage";
-
+import { AuthenticationProvider } from "./authentication/AuthenticationProvider";
+import { IUnauthorizedRoutes } from "./authentication/unauthorized/unauthorizedRoutes.interfaces";
+import { AuthorizationRoles } from "./authentication/AuthorizationRoles";
+import { IUnauthorizedRoute } from "./authentication/unauthorized/unauthorizedRoutes.interfaces";
+import { Unauthorized } from "./authentication/unauthorized/Unauthorized";
+import { LoginForm } from "./authentication/login/LoginForm";
+import { ApolloProvider } from "@apollo/client";
+import { ILogin } from "./authentication/login/Login";
+import { AuthError } from "./authentication/Authentication";
 export {
   CenteredSpinner,
   IsPhoneProvider,
@@ -77,4 +85,13 @@ export {
   Tabs,
   getDate,
   getPropertyName,
+  AuthenticationProvider,
+  IUnauthorizedRoutes,
+  IUnauthorizedRoute,
+  AuthorizationRoles,
+  Unauthorized,
+  LoginForm,
+  ApolloProvider,
+  ILogin,
+  AuthError,
 };

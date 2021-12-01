@@ -1,0 +1,23 @@
+.cardUnauthorized {
+  width: 290px !important;
+
+  p {
+    color: black !important;
+  }
+}
+
+.unauthorizedWarining {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.unauthorizedHeading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
