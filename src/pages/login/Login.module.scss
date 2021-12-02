@@ -33,12 +33,9 @@
       margin-bottom: -0.8rem;
     }
 
-    .loginInput {
+    input {
       border-color: rgba(34, 42, 66, 0.2) !important;
-    }
-
-    input[name="password"] {
-      border-color: rgba(34, 42, 66, 0.2) !important;
+      color: black !important;
     }
 
     .loginHelpers {

@@ -45,7 +45,6 @@ import { AuthorizationRoles } from "./authentication/AuthorizationRoles";
 import { IUnauthorizedRoute } from "./authentication/unauthorized/unauthorizedRoutes.interfaces";
 import { Unauthorized } from "./authentication/unauthorized/Unauthorized";
 import { LoginForm } from "./authentication/login/LoginForm";
-import { ApolloProvider } from "@apollo/client";
 import { ILogin } from "./authentication/login/Login";
 import { AuthError } from "./authentication/Authentication";
 export {
@@ -91,7 +90,6 @@ export {
   AuthorizationRoles,
   Unauthorized,
   LoginForm,
-  ApolloProvider,
   ILogin,
   AuthError,
 };

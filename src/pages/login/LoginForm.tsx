@@ -61,7 +61,6 @@ export const LoginForm: React.FC<ILoginForm> = (props) => {
                 onChange={formik.handleChange}
                 type="text"
                 placeholder="USERNAME"
-                className={styles.loginInput}
               />
               <Form.Control.Feedback
                 type="invalid"
