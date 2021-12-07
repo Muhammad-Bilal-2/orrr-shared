@@ -1,4 +1,4 @@
-name: "publish"
+name: "orrr-shared"
 
 on:
   push:
