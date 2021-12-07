@@ -15,7 +15,7 @@ jobs:
           node-version: "14.x"
       - run: npm install
       # yarn build to build the project
-      - run: npm build
+      - run: npm run-script build
 
   publish-npm:
     needs: build
