@@ -1,3 +1,5 @@
+import { Login } from "./pages/login/Login";
+import { LoginForm as LoginForm2 } from "./pages/login/LoginForm";
 import { CenteredSpinner, ButtonSpinner } from "./Spinner";
 import {
   IsPhoneProvider,
@@ -71,6 +73,7 @@ export {
   getUniqueBy,
   useOnce,
   useLocalStorage,
+  Login,
   LoadingButton,
   SimpleCard,
   PasswordInput,
@@ -90,4 +93,5 @@ export {
   LoginForm,
   ILogin,
   AuthError,
+  LoginForm2,
 };
