@@ -2,16 +2,16 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var classNames = require('classnames');
 var React = require('react');
 var reactBootstrap = require('react-bootstrap');
-var yup = require('yup');
-var formik = require('formik');
-var freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 var reactFontawesome = require('@fortawesome/react-fontawesome');
-var classNames = require('classnames');
+var freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 var reactRouterDom = require('react-router-dom');
 var reactGoogleLogin = require('react-google-login');
+var yup = require('yup');
 var Sentry = require('@sentry/react');
+var formik = require('formik');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -24,130 +24,20 @@ function _interopNamespace(e) {
         var d = Object.getOwnPropertyDescriptor(e, k);
         Object.defineProperty(n, k, d.get ? d : {
           enumerable: true,
-          get: function () {
-            return e[k];
-          }
+          get: function () { return e[k]; }
         });
       }
     });
   }
-  n['default'] = e;
+  n["default"] = e;
   return Object.freeze(n);
 }
 
+var classNames__default = /*#__PURE__*/_interopDefaultLegacy(classNames);
 var React__namespace = /*#__PURE__*/_interopNamespace(React);
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var yup__namespace = /*#__PURE__*/_interopNamespace(yup);
-var classNames__default = /*#__PURE__*/_interopDefaultLegacy(classNames);
 var Sentry__namespace = /*#__PURE__*/_interopNamespace(Sentry);
-
-function styleInject(css, ref) {
-  if ( ref === void 0 ) ref = {};
-  var insertAt = ref.insertAt;
-
-  if (!css || typeof document === 'undefined') { return; }
-
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var style = document.createElement('style');
-  style.type = 'text/css';
-
-  if (insertAt === 'top') {
-    if (head.firstChild) {
-      head.insertBefore(style, head.firstChild);
-    } else {
-      head.appendChild(style);
-    }
-  } else {
-    head.appendChild(style);
-  }
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-}
-
-var css_248z$2 = ".Login-module_loginContainer__2EudT {\n  background-color: #fff !important;\n  height: 100vh;\n  margin: 0 !important; }\n  .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td {\n    box-shadow: none !important;\n    background-color: inherit !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td label {\n      color: #222a42 !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHeading__2ecv9 {\n      font-size: x-large;\n      text-align: center;\n      font-weight: 700 !important;\n      color: #222a42 !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginErrorMessage__1QePR {\n      color: red;\n      font-size: 1rem;\n      text-align: center;\n      position: absolute;\n      top: 2.8rem;\n      width: 100%; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_invalidFeedback__Hpui0 {\n      font-size: 0.8rem;\n      margin-top: 0.1rem;\n      margin-bottom: -0.8rem; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td input {\n      border-color: rgba(34, 42, 66, 0.2) !important;\n      color: black !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E {\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n      margin: auto 0 !important; }\n      .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E .Login-module_loginHelpersContainer__1FCu0 {\n        display: flex;\n        justify-content: center;\n        flex-direction: column;\n        flex-basis: 0; }\n        @media (max-width: 575.98px) {\n          .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E .Login-module_loginHelpersContainer__1FCu0 {\n            flex-basis: inherit;\n            margin-bottom: 0.9rem; } }\n        @media (min-width: 575.98px) {\n          .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E .Login-module_loginHelpersContainer__1FCu0 {\n            padding: 0; } }\n      .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E button {\n        min-width: 160px; }\n        @media (min-width: 1440px) {\n          .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E button {\n            min-width: 220px; } }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_forgotLinks__2LBVZ {\n      cursor: pointer;\n      color: #00c389;\n      font-size: 0.8rem;\n      display: flex;\n      justify-content: flex-start;\n      align-items: center; }\n      @media (max-width: 575.98px) {\n        .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_forgotLinks__2LBVZ {\n          justify-content: center; } }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginFooter__1s1Xl .Login-module_row__3BK-N {\n      margin: 0; }\n  .Login-module_loginContainer__2EudT .Login-module_loginImage__1EIfr {\n    height: 100%;\n    object-fit: cover;\n    max-width: 100%;\n    opacity: 0.2; }\n  .Login-module_loginContainer__2EudT .Login-module_imageOverlay__LUkPu {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    padding: 0 10rem 0 25px; }\n    @media (max-width: 575.98px) {\n      .Login-module_loginContainer__2EudT .Login-module_imageOverlay__LUkPu {\n        padding: 0 2rem 0 25px; } }\n  .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC {\n    background-color: black !important;\n    color: #fff;\n    margin-bottom: 0;\n    height: 100vh; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoTitle__1dfVu {\n      color: #fff;\n      font-weight: 700;\n      font-size: 1.5rem; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC p {\n      color: white;\n      margin-bottom: 1rem; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC ul li {\n      color: white !important; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6 {\n      display: flex;\n      width: 150px;\n      justify-content: center;\n      align-items: center;\n      position: relative;\n      cursor: pointer; }\n      .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6 a {\n        z-index: 100;\n        font-size: 1.2rem;\n        font-weight: 500; }\n      .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6 svg {\n        z-index: 100;\n        padding-left: 0.5rem;\n        font-size: 1.5rem;\n        color: #fff; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLinkHover__Sv7Ae {\n      background-color: #ffb81c;\n      position: absolute;\n      top: 0;\n      left: 0;\n      height: 100%;\n      transition: all 0.3s ease-out;\n      width: 0.5rem; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6:hover > .Login-module_loginInfoLinkHover__Sv7Ae {\n      width: 100%; }\n";
-var styles$2 = {"loginContainer":"Login-module_loginContainer__2EudT","cardLoginForm":"Login-module_cardLoginForm__1G8td","loginHeading":"Login-module_loginHeading__2ecv9","loginErrorMessage":"Login-module_loginErrorMessage__1QePR","invalidFeedback":"Login-module_invalidFeedback__Hpui0","loginHelpers":"Login-module_loginHelpers__2Dx_E","loginHelpersContainer":"Login-module_loginHelpersContainer__1FCu0","forgotLinks":"Login-module_forgotLinks__2LBVZ","loginFooter":"Login-module_loginFooter__1s1Xl","row":"Login-module_row__3BK-N","loginImage":"Login-module_loginImage__1EIfr","imageOverlay":"Login-module_imageOverlay__LUkPu","loginInfoSection":"Login-module_loginInfoSection__1exRC","loginInfoTitle":"Login-module_loginInfoTitle__1dfVu","loginInfoLink":"Login-module_loginInfoLink__38Lu6","loginInfoLinkHover":"Login-module_loginInfoLinkHover__Sv7Ae"};
-styleInject(css_248z$2);
-
-var LoginForm$1 = function (props) {
-    var schema = yup__namespace.object().shape({
-        username: yup__namespace.string().trim().required("Username is required"),
-        password: yup__namespace.string().trim().required("Password is required"),
-    });
-    var formik$1 = formik.useFormik({
-        initialValues: {
-            username: "",
-            password: "",
-        },
-        validationSchema: schema,
-        onSubmit: props.handleSubmit,
-        enableReinitialize: true,
-    });
-    return (React__namespace.createElement(React__namespace.Fragment, null,
-        React__namespace.createElement(reactBootstrap.Form, { as: reactBootstrap.Col, xs: 10, sm: 8, md: 6, lg: 7, onKeyDown: function (e) {
-                if (e.key === "Enter") {
-                    formik$1.handleSubmit();
-                }
-            } },
-            React__namespace.createElement(reactBootstrap.Card, { className: styles$2.cardLoginForm },
-                React__namespace.createElement(reactBootstrap.Card.Header, null,
-                    React__namespace.createElement(reactBootstrap.Card.Title, { className: styles$2.loginHeading }, "Welcome")),
-                React__namespace.createElement(reactBootstrap.Card.Body, null,
-                    props.error && (React__namespace.createElement("div", { className: styles$2.loginErrorMessage },
-                        props.error.message,
-                        " ")),
-                    React__namespace.createElement(reactBootstrap.Form.Group, { className: "mb-3" },
-                        React__namespace.createElement(reactBootstrap.Form.Label, null, "USERNAME"),
-                        React__namespace.createElement(reactBootstrap.FormControl, { name: "username", isInvalid: formik$1.touched.username && !!formik$1.errors.username, value: formik$1.values.username, onChange: formik$1.handleChange, type: "text", placeholder: "USERNAME" }),
-                        React__namespace.createElement(reactBootstrap.Form.Control.Feedback, { type: "invalid", className: styles$2.invalidFeedback }, formik$1.errors.username)),
-                    React__namespace.createElement(reactBootstrap.Form.Group, { className: "mb-3" },
-                        React__namespace.createElement(PasswordInput, { label: "PASSWORD", placeholder: "PASSWORD", isInvalid: formik$1.touched.password && !!formik$1.errors.password, error: formik$1.errors.password, onChange: formik$1.handleChange, value: formik$1.values.password, name: "password" })),
-                    React__namespace.createElement(reactBootstrap.Row, { className: styles$2.loginHelpers },
-                        React__namespace.createElement(reactBootstrap.Col, { className: styles$2.loginHelpersContainer },
-                            React__namespace.createElement("div", { className: styles$2.forgotLinks, onClick: function () { return props.setShowModal("password"); } },
-                                React__namespace.createElement("span", { className: "pr-2" }, "Forgot Password"),
-                                React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faGreaterThan, size: "xs" })),
-                            React__namespace.createElement("div", { className: styles$2.forgotLinks, onClick: function () { return props.setShowModal("username"); } },
-                                React__namespace.createElement("span", { className: "pr-2" }, "Forgot Username"),
-                                React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faGreaterThan, size: "xs" }))),
-                        React__namespace.createElement(reactBootstrap.Col, { className: "d-flex justify-content-sm-end justify-content-center px-0 align-items-center" },
-                            React__namespace.createElement(LoadingButton, { className: styles$2.loginBtn, color: "primary", isLoading: props.loading, defaultText: "Log in", loadingText: "Loading", onClick: function () { return formik$1.handleSubmit(); } }))))))));
-};
-
-var LoginImage$1 = function (props) {
-    return (React__namespace.createElement(React__namespace.Fragment, null,
-        React__namespace.createElement("div", { className: styles$2.loginInfoSection },
-            React__namespace.createElement("img", { alt: "login-image", className: styles$2.loginImage, src: props.imgUrl }),
-            React__namespace.createElement("div", { className: styles$2.imageOverlay },
-                React__namespace.createElement("h2", { className: styles$2.loginInfoTitle }, props.header),
-                props.text && React__namespace.createElement("p", null, props.text),
-                props.children))));
-};
-
-var Login$1 = function (props) {
-    return (React__namespace.createElement("div", { className: "content h-100" },
-        React__namespace.createElement(reactBootstrap.Row, { className: styles$2.loginContainer },
-            React__namespace.createElement(reactBootstrap.Col, { xs: 12, lg: 7, className: "h-100 p-0" },
-                React__namespace.createElement(reactBootstrap.Container, { fluid: true, className: "d-flex align-items-center justify-content-center h-100" },
-                    React__namespace.createElement(LoginForm$1, { loading: props.loading, handleSubmit: props.handleSubmit, error: props.error, setShowModal: props.setShowModal }))),
-            React__namespace.createElement(reactBootstrap.Col, { xs: 12, lg: 5, className: "h-100 px-0" },
-                React__namespace.createElement(LoginImage$1, { imgUrl: "https://cdn.orrprotection.com/netsite/login2.jpg", header: "WHAT IS NETSITE?", text: "NetSITE provides secure, online access to all critical information\r\n          related to any fire protection system at any facility or site\r\n          serviced by ORR" },
-                    React__namespace.createElement("h2", { className: styles$2.loginInfoTitle }, "All Documentation Online..."),
-                    React__namespace.createElement("p", null, "for all fire protection systems, located in any facility across the country"),
-                    React__namespace.createElement("ul", null,
-                        React__namespace.createElement("li", null, "Inspections Report"),
-                        React__namespace.createElement("li", null, "Proposals/ Pricing"),
-                        React__namespace.createElement("li", null, "Invoices"),
-                        React__namespace.createElement("li", null, "System Drawings"),
-                        React__namespace.createElement("li", null, "Owner Manual's")),
-                    React__namespace.createElement("div", { className: styles$2.loginInfoLink },
-                        React__namespace.createElement("div", { className: styles$2.loginInfoLinkHover }),
-                        React__namespace.createElement("a", { href: process.env.REACT_APP_ORR_NETREPORT_URL }, "Learn more"),
-                        React__namespace.createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faArrowRight })))))));
-};
 
 var big = "20rem";
 var med = "10rem";
@@ -169,7 +59,7 @@ var getStyle = function (size) {
     }
 };
 var getSpinnerClassNames = function (justifyLeft) {
-    return classNames__default['default']("d-flex", justifyLeft ? "" : "justify-content-center");
+    return classNames__default["default"]("d-flex", justifyLeft ? "" : "justify-content-center");
 };
 var CenteredSpinner = function (props) {
     var getSpinner = function () {
@@ -501,26 +391,26 @@ var SimpleCard = function (_a) {
 
 var PasswordInput = function (_a) {
     var label = _a.label, name = _a.name, isInvalid = _a.isInvalid, error = _a.error, onChange = _a.onChange, value = _a.value, disabled = _a.disabled, placeholder = _a.placeholder, inputGroupCustomClass = _a.inputGroupCustomClass, inputPasswordClass = _a.inputPasswordClass;
-    var _b = React__default['default'].useState(false), passwordVisible = _b[0], setPasswordVisible = _b[1];
+    var _b = React__default["default"].useState(false), passwordVisible = _b[0], setPasswordVisible = _b[1];
     var togglePassword = function () {
         setPasswordVisible(!passwordVisible);
     };
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        label && React__default['default'].createElement(reactBootstrap.Form.Label, null, label),
-        React__default['default'].createElement(reactBootstrap.InputGroup, { className: inputGroupCustomClass },
-            React__default['default'].createElement(reactBootstrap.Form.Control, { name: name, placeholder: placeholder, isInvalid: isInvalid, value: value, type: passwordVisible ? "text" : "password", onChange: onChange, disabled: disabled, className: inputPasswordClass }),
-            React__default['default'].createElement(reactBootstrap.InputGroup.Append, { className: "togglePasswordHolder", onClick: togglePassword },
-                React__default['default'].createElement(reactBootstrap.InputGroup.Text, { className: passwordVisible ? "passwordInputActive" : "passwordInput" },
-                    React__default['default'].createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faEye }))),
-            error && (React__default['default'].createElement(reactBootstrap.Form.Control.Feedback, { className: "passwordInvalid", type: "invalid" }, error)))));
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        label && React__default["default"].createElement(reactBootstrap.Form.Label, null, label),
+        React__default["default"].createElement(reactBootstrap.InputGroup, { className: inputGroupCustomClass },
+            React__default["default"].createElement(reactBootstrap.Form.Control, { name: name, placeholder: placeholder, isInvalid: isInvalid, value: value, type: passwordVisible ? "text" : "password", onChange: onChange, disabled: disabled, className: inputPasswordClass }),
+            React__default["default"].createElement(reactBootstrap.InputGroup.Append, { className: "togglePasswordHolder", onClick: togglePassword },
+                React__default["default"].createElement(reactBootstrap.InputGroup.Text, { className: passwordVisible ? "passwordInputActive" : "passwordInput" },
+                    React__default["default"].createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faEye }))),
+            error && (React__default["default"].createElement(reactBootstrap.Form.Control.Feedback, { className: "passwordInvalid", type: "invalid" }, error)))));
 };
 
 var BackButton = function () {
     var history = reactRouterDom.useHistory();
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement("div", { className: "backButtonHolder", onClick: function () { return history.goBack(); } },
-            React__default['default'].createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faLessThan, size: "xs" }),
-            React__default['default'].createElement("span", { className: "pl-2" }, "Back"))));
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement("div", { className: "backButtonHolder", onClick: function () { return history.goBack(); } },
+            React__default["default"].createElement(reactFontawesome.FontAwesomeIcon, { icon: freeSolidSvgIcons.faLessThan, size: "xs" }),
+            React__default["default"].createElement("span", { className: "pl-2" }, "Back"))));
 };
 
 var ButtonLoadingSpinner = function (props) {
@@ -532,16 +422,16 @@ var ButtonLoadingSpinner = function (props) {
 
 var ModalNoHeaderOverlay = function (props) {
     return (React__namespace.createElement(React__namespace.Fragment, null,
-        React__namespace.createElement(reactBootstrap.Modal, { className: "modal-no-header", onHide: props.setShow, animation: false, size: props.size ? props.size : "lg", show: props.show, centered: true },
+        React__namespace.createElement(reactBootstrap.Modal, { className: "modal-no-header", animation: false, size: props.size ? props.size : "lg", show: props.show, centered: true },
             React__namespace.createElement(reactBootstrap.CloseButton, { onClick: function () { return props.setShow(""); } }),
             React__namespace.createElement(reactBootstrap.Modal.Body, { className: "modal-body" }, props.children))));
 };
 
 var ModalSuccess = function (props) {
-    return (React__default['default'].createElement(ModalNoHeaderOverlay, { show: props.show, setShow: props.setShow },
-        React__default['default'].createElement(reactFontawesome.FontAwesomeIcon, { className: "modal-success-icon", icon: freeSolidSvgIcons.faCheckCircle, size: "10x" }),
-        React__default['default'].createElement("h2", { className: "mb-2" }, "Success!"),
-        React__default['default'].createElement("p", null, props.text)));
+    return (React__default["default"].createElement(ModalNoHeaderOverlay, { show: props.show, setShow: props.setShow },
+        React__default["default"].createElement(reactFontawesome.FontAwesomeIcon, { className: "modal-success-icon", icon: freeSolidSvgIcons.faCheckCircle, size: "10x" }),
+        React__default["default"].createElement("h2", { className: "mb-2" }, "Success!"),
+        React__default["default"].createElement("p", null, props.text)));
 };
 
 var ForgotUsernameModal = function (_a) {
@@ -576,15 +466,15 @@ var ForgotPasswordModal = function (_a) {
 
 var Dropdowns = function (_a) {
     var selectedItem = _a.selectedItem, items = _a.items, _b = _a.isDisabled, isDisabled = _b === void 0 ? false : _b, setSelectedItem = _a.setSelectedItem, text = _a.text, dropDownDisplayItemText = _a.dropDownDisplayItemText;
-    return (React__default['default'].createElement(reactBootstrap.Form.Group, null,
-        React__default['default'].createElement(reactBootstrap.Form.Control, { size: "lg", as: "select", value: selectedItem, onChange: function (e) {
+    return (React__default["default"].createElement(reactBootstrap.Form.Group, null,
+        React__default["default"].createElement(reactBootstrap.Form.Control, { size: "lg", as: "select", value: selectedItem, onChange: function (e) {
                 setSelectedItem(e.target.value);
-            }, disabled: isDisabled }, (items === null || items === void 0 ? void 0 : items.length) !== 1 ? (React__default['default'].createElement(React__default['default'].Fragment, null,
-            dropDownDisplayItemText ? (React__default['default'].createElement("option", { value: "" }, dropDownDisplayItemText)) : null,
+            }, disabled: isDisabled }, (items === null || items === void 0 ? void 0 : items.length) !== 1 ? (React__default["default"].createElement(React__default["default"].Fragment, null,
+            dropDownDisplayItemText ? (React__default["default"].createElement("option", { value: "" }, dropDownDisplayItemText)) : null,
             items &&
-                items.map(function (dropdownitem, index) { return (React__default['default'].createElement("option", { key: index, value: dropdownitem.key },
+                items.map(function (dropdownitem, index) { return (React__default["default"].createElement("option", { key: index, value: dropdownitem.key },
                     dropdownitem.value,
-                    text ? text : null)); }))) : (items && (React__default['default'].createElement("option", { key: items[0].key, value: items[0].key }, items[0].value))))));
+                    text ? text : null)); }))) : (items && (React__default["default"].createElement("option", { key: items[0].key, value: items[0].key }, items[0].value))))));
 };
 
 var TAB_SEARCH_KEY = "tab";
@@ -594,7 +484,7 @@ var Tabs = function (_a) {
     var orderedTabs = React.useMemo(function () { return OrderBy(tabs, "order"); }, [tabs]);
     var search = window.location.search;
     var searchParams = React.useMemo(function () { return new URLSearchParams(search); }, [search]);
-    var uniqueSearchKey = React.useMemo(function () { return uniqueKey + "-" + TAB_SEARCH_KEY; }, [uniqueKey]);
+    var uniqueSearchKey = React.useMemo(function () { return "".concat(uniqueKey, "-").concat(TAB_SEARCH_KEY); }, [uniqueKey]);
     var urlKey = React.useMemo(function () {
         var searchKey = searchParams.get(uniqueSearchKey);
         return searchKey || orderedTabs[0].key;
@@ -770,6 +660,33 @@ var Authentication = function (props) {
     }
 };
 
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
 var css_248z$1 = ".Login-module_loginContainer__ovFhO {\n  background-color: #fff;\n  height: 100vh;\n  margin: 0 !important; }\n  .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN {\n    box-shadow: none !important;\n    background-color: #fff; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginErrorMessage__1hZrs {\n      color: red;\n      font-size: 1rem;\n      text-align: center;\n      position: absolute;\n      top: 2.8rem;\n      width: 100%; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_invalidFeedback__1_xPc {\n      font-size: 0.8rem;\n      margin-top: 0.1rem;\n      margin-bottom: -0.8rem; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginInput__obfve {\n      border-color: rgba(34, 42, 66, 0.2) !important; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN input[name=\"password\"] {\n      border-color: rgba(34, 42, 66, 0.2) !important; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHelpers__1vXiR {\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n      margin: auto 0 !important; }\n      .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHelpers__1vXiR .Login-module_loginHelpersContainer__2bpKL {\n        display: flex;\n        justify-content: center;\n        flex-direction: column;\n        flex-basis: 0; }\n        @media (max-width: 575.98px) {\n          .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHelpers__1vXiR .Login-module_loginHelpersContainer__2bpKL {\n            flex-basis: inherit;\n            margin-bottom: 0.9rem; } }\n      .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHelpers__1vXiR button {\n        min-width: 160px; }\n        @media (min-width: 1440px) {\n          .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHelpers__1vXiR button {\n            min-width: 220px; } }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHeading__1HKkI {\n      font-size: x-large;\n      text-align: center;\n      font-weight: 700 !important;\n      color: #000 !important; }\n      .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHeading__1HKkI span {\n        font-size: medium;\n        font-weight: 500; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_forgotLinks__9HJ1I {\n      cursor: pointer;\n      color: #00c389;\n      font-size: 0.8rem;\n      display: flex;\n      justify-content: flex-start;\n      align-items: center; }\n      @media (max-width: 575.98px) {\n        .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_forgotLinks__9HJ1I {\n          justify-content: center; } }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginFooter__1NiI- .Login-module_row__3zplp {\n      margin: 0; }\n  .Login-module_loginContainer__ovFhO .Login-module_loginImage__1_7s6 {\n    height: 100%;\n    object-fit: cover;\n    max-width: 100%;\n    opacity: 0.2; }\n  .Login-module_loginContainer__ovFhO .Login-module_imageOverlay__1eAiO {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    padding: 0 10rem 0 25px; }\n  .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 {\n    background-color: black !important;\n    color: #fff;\n    margin-bottom: 0;\n    height: 100vh; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoTitle__2WFTa {\n      color: #fff;\n      font-weight: 700;\n      font-size: 1.5rem; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 p {\n      color: white;\n      margin-bottom: 1rem; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 ul li {\n      color: white !important; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLink__1ASEM {\n      display: flex;\n      width: 150px;\n      justify-content: center;\n      align-items: center;\n      position: relative;\n      cursor: pointer; }\n      .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLink__1ASEM a {\n        z-index: 100;\n        font-size: 1.2rem;\n        font-weight: 500; }\n      .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLink__1ASEM a:hover {\n        color: #fff; }\n      .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLink__1ASEM svg {\n        z-index: 100;\n        padding-left: 0.5rem;\n        font-size: 1.5rem;\n        color: #fff; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLinkHover__3JuBp {\n      background-color: #ffb81c;\n      position: absolute;\n      top: 0;\n      left: 0;\n      height: 100%;\n      transition: all 0.3s ease-out;\n      width: 0.5rem; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLink__1ASEM:hover > .Login-module_loginInfoLinkHover__3JuBp {\n      width: 100%; }\n\n.Login-module_loginButton__7GV6C {\n  background-color: white;\n  color: rgba(0, 0, 0, 0.54);\n  padding-right: 5px;\n  border-radius: 2px;\n  border: 1px solid transparent;\n  font-size: 14px;\n  font-weight: 500;\n  font-family: Roboto, sans-serif;\n  height: 50px;\n  box-shadow: #cac6c6 0px 2px 2px 0px, #cac6c6 0px 0px 1px 0px; }\n\n.Login-module_imgSize__tE5Wg {\n  width: 20px;\n  margin-right: 5px; }\n";
 var styles$1 = {"loginContainer":"Login-module_loginContainer__ovFhO","cardLoginForm":"Login-module_cardLoginForm__1RNQN","loginErrorMessage":"Login-module_loginErrorMessage__1hZrs","invalidFeedback":"Login-module_invalidFeedback__1_xPc","loginInput":"Login-module_loginInput__obfve","loginHelpers":"Login-module_loginHelpers__1vXiR","loginHelpersContainer":"Login-module_loginHelpersContainer__2bpKL","loginHeading":"Login-module_loginHeading__1HKkI","forgotLinks":"Login-module_forgotLinks__9HJ1I","loginFooter":"Login-module_loginFooter__1NiI-","row":"Login-module_row__3zplp","loginImage":"Login-module_loginImage__1_7s6","imageOverlay":"Login-module_imageOverlay__1eAiO","loginInfoSection":"Login-module_loginInfoSection__2vkC8","loginInfoTitle":"Login-module_loginInfoTitle__2WFTa","loginInfoLink":"Login-module_loginInfoLink__1ASEM","loginInfoLinkHover":"Login-module_loginInfoLinkHover__3JuBp","loginButton":"Login-module_loginButton__7GV6C","imgSize":"Login-module_imgSize__tE5Wg"};
 styleInject(css_248z$1);
@@ -898,7 +815,7 @@ var ModalLogin = function (_a) {
         React__namespace.createElement("h3", { className: "mt-3 mb-1 font-weight-bold" }, modal === "Username" ? "Retrieve User Name" : "Reset Password"),
         React__namespace.createElement("p", { className: "text-muted text-center mb-3" }, text),
         React__namespace.createElement(reactBootstrap.Form.Label, { className: "align-self-start" }, modal === "Username" ? "Email Address" : "User Name"),
-        React__namespace.createElement(reactBootstrap.Form.Control, { className: "mb-2 text-muted", type: "text", id: "loginInput" + modal, value: value, onChange: function (e) { return setValue(e.target.value); }, placeholder: modal === "Username" ? "Email Address" : "User Name" }),
+        React__namespace.createElement(reactBootstrap.Form.Control, { className: "mb-2 text-muted", type: "text", id: "loginInput".concat(modal), value: value, onChange: function (e) { return setValue(e.target.value); }, placeholder: modal === "Username" ? "Email Address" : "User Name" }),
         status && status !== "Success" ? errorMessage() : null,
         React__namespace.createElement("div", { className: "my-2 px-2 d-flex justify-content-around flex-column flex-sm-row w-sm-100" },
             React__namespace.createElement(reactBootstrap.Button, { className: "mb-2 mb-sm-0 text-muted", variant: "white", onClick: onClick }, "Cancel"),
@@ -930,7 +847,7 @@ var Login = function (_a) {
                     React__namespace.createElement(reactBootstrap.Container, { fluid: true, className: "d-flex align-items-center justify-content-center h-100" },
                         React__namespace.createElement(LoginForm, { loading: loading, error: error, signIn: signIn, isAutoLogin: isAutoLogin, setShowModal: setShowModal, logo: logo }))),
                 React__namespace.createElement(reactBootstrap.Col, { xs: 12, lg: 5, className: "h-100 px-0" },
-                    React__namespace.createElement(LoginImage, { header: "Lorem ipsum ?", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\n            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\n            numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium", imgUrl: process.env.REACT_APP_CDN_URL + "/netsite/login2.jpg" },
+                    React__namespace.createElement(LoginImage, { header: "Lorem ipsum ?", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\n            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\n            numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium", imgUrl: "".concat(process.env.REACT_APP_CDN_URL, "/netsite/login2.jpg") },
                         React__namespace.createElement("h2", { className: styles$1.loginInfoTitle }, "Lorem ipsum Online..."),
                         React__namespace.createElement("p", null,
                             " ",
@@ -950,19 +867,19 @@ var Login = function (_a) {
 
 var AuthenticationProvider = function (props) {
     var googleId = props.googleId, login = props.login, logout = props.logout, AuthenticatedAccountInfoRoutes = props.AuthenticatedAccountInfoRoutes, UnauthenticatedRoutes = props.UnauthenticatedRoutes, AuthenticatedAccountErrorRoutes = props.AuthenticatedAccountErrorRoutes;
-    return (React__default['default'].createElement(React__default['default'].Fragment, null,
-        React__default['default'].createElement(Authentication, { googleId: googleId, loginCallBack: login, logoutCallBack: logout }, function (_a) {
+    return (React__default["default"].createElement(React__default["default"].Fragment, null,
+        React__default["default"].createElement(Authentication, { googleId: googleId, loginCallBack: login, logoutCallBack: logout }, function (_a) {
             var authenticationState = _a.authenticationState, accountInfo = _a.accountInfo, loading = _a.loading, error = _a.error, login = _a.login, logout = _a.logout;
             switch (authenticationState) {
                 case AuthenticationState.Authenticated:
                     if (accountInfo) {
-                        return (React__default['default'].createElement(AuthenticatedAccountInfoRoutes, { userInformation: accountInfo, logout: logout }));
+                        return (React__default["default"].createElement(AuthenticatedAccountInfoRoutes, { userInformation: accountInfo, logout: logout }));
                     }
-                    return (React__default['default'].createElement(AuthenticatedAccountErrorRoutes, { loading: loading, error: error, signIn: login, LoginPage: Login }));
+                    return (React__default["default"].createElement(AuthenticatedAccountErrorRoutes, { loading: loading, error: error, signIn: login, LoginPage: Login }));
                 case AuthenticationState.Unauthenticated:
-                    return (React__default['default'].createElement(UnauthenticatedRoutes, { loading: loading, error: error, signIn: login, loaded: loading, LoginPage: Login }));
+                    return (React__default["default"].createElement(UnauthenticatedRoutes, { loading: loading, error: error, signIn: login, loaded: loading, LoginPage: Login }));
                 case AuthenticationState.InProgress:
-                    return (React__default['default'].createElement(CenteredSpinner, { loading: accountInfo === undefined && !error ? true : false, size: "lg", loadingText: "Authenticating..." }));
+                    return (React__default["default"].createElement(CenteredSpinner, { loading: accountInfo === undefined && !error ? true : false, size: "lg", loadingText: "Authenticating..." }));
             }
         })));
 };
@@ -1006,7 +923,6 @@ exports.ForgotUsernameModal = ForgotUsernameModal;
 exports.GetToday = GetToday;
 exports.IsPhoneProvider = IsPhoneProvider;
 exports.LoadingButton = LoadingButton;
-exports.Login = Login$1;
 exports.LoginForm = LoginForm;
 exports.ModalNoHeaderOverlay = ModalNoHeaderOverlay;
 exports.ModalOverlay = ModalOverlay;

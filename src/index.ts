@@ -1,4 +1,3 @@
-import { Login } from "./pages/login/Login";
 import { CenteredSpinner, ButtonSpinner } from "./Spinner";
 import {
   IsPhoneProvider,
@@ -72,7 +71,6 @@ export {
   getUniqueBy,
   useOnce,
   useLocalStorage,
-  Login,
   LoadingButton,
   SimpleCard,
   PasswordInput,

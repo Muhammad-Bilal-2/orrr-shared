@@ -14,7 +14,6 @@ export const ModalNoHeaderOverlay: React.FC<IModalNoHeaderOverlayProps> = (
     <>
       <Modal
         className="modal-no-header"
-        onHide={props.setShow}
         animation={false}
         size={props.size ? props.size : "lg"}
         show={props.show}

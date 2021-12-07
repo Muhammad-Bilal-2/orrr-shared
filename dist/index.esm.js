@@ -1,122 +1,14 @@
+import classNames from 'classnames';
 import * as React from 'react';
 import React__default, { useState, useEffect, createContext, useContext, useRef, useMemo, useCallback } from 'react';
-import { Form, Col, Card, FormControl, Row, Container, Spinner, Modal, Button, InputGroup, CloseButton, Tabs as Tabs$1, Tab } from 'react-bootstrap';
-import * as yup from 'yup';
-import { useFormik } from 'formik';
-import { faGreaterThan, faArrowRight, faEye, faLessThan, faCheckCircle, faUserCog, faUserLock } from '@fortawesome/free-solid-svg-icons';
+import { Spinner, Modal, Card, Row, Col, Button, Form, InputGroup, CloseButton, Tabs as Tabs$1, Tab, FormControl, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { faEye, faLessThan, faCheckCircle, faUserCog, faUserLock, faGreaterThan, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { useGoogleLogin } from 'react-google-login';
+import * as yup from 'yup';
 import * as Sentry from '@sentry/react';
-
-function styleInject(css, ref) {
-  if ( ref === void 0 ) ref = {};
-  var insertAt = ref.insertAt;
-
-  if (!css || typeof document === 'undefined') { return; }
-
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var style = document.createElement('style');
-  style.type = 'text/css';
-
-  if (insertAt === 'top') {
-    if (head.firstChild) {
-      head.insertBefore(style, head.firstChild);
-    } else {
-      head.appendChild(style);
-    }
-  } else {
-    head.appendChild(style);
-  }
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-}
-
-var css_248z$2 = ".Login-module_loginContainer__2EudT {\n  background-color: #fff !important;\n  height: 100vh;\n  margin: 0 !important; }\n  .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td {\n    box-shadow: none !important;\n    background-color: inherit !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td label {\n      color: #222a42 !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHeading__2ecv9 {\n      font-size: x-large;\n      text-align: center;\n      font-weight: 700 !important;\n      color: #222a42 !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginErrorMessage__1QePR {\n      color: red;\n      font-size: 1rem;\n      text-align: center;\n      position: absolute;\n      top: 2.8rem;\n      width: 100%; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_invalidFeedback__Hpui0 {\n      font-size: 0.8rem;\n      margin-top: 0.1rem;\n      margin-bottom: -0.8rem; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td input {\n      border-color: rgba(34, 42, 66, 0.2) !important;\n      color: black !important; }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E {\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n      margin: auto 0 !important; }\n      .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E .Login-module_loginHelpersContainer__1FCu0 {\n        display: flex;\n        justify-content: center;\n        flex-direction: column;\n        flex-basis: 0; }\n        @media (max-width: 575.98px) {\n          .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E .Login-module_loginHelpersContainer__1FCu0 {\n            flex-basis: inherit;\n            margin-bottom: 0.9rem; } }\n        @media (min-width: 575.98px) {\n          .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E .Login-module_loginHelpersContainer__1FCu0 {\n            padding: 0; } }\n      .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E button {\n        min-width: 160px; }\n        @media (min-width: 1440px) {\n          .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginHelpers__2Dx_E button {\n            min-width: 220px; } }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_forgotLinks__2LBVZ {\n      cursor: pointer;\n      color: #00c389;\n      font-size: 0.8rem;\n      display: flex;\n      justify-content: flex-start;\n      align-items: center; }\n      @media (max-width: 575.98px) {\n        .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_forgotLinks__2LBVZ {\n          justify-content: center; } }\n    .Login-module_loginContainer__2EudT .Login-module_cardLoginForm__1G8td .Login-module_loginFooter__1s1Xl .Login-module_row__3BK-N {\n      margin: 0; }\n  .Login-module_loginContainer__2EudT .Login-module_loginImage__1EIfr {\n    height: 100%;\n    object-fit: cover;\n    max-width: 100%;\n    opacity: 0.2; }\n  .Login-module_loginContainer__2EudT .Login-module_imageOverlay__LUkPu {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    padding: 0 10rem 0 25px; }\n    @media (max-width: 575.98px) {\n      .Login-module_loginContainer__2EudT .Login-module_imageOverlay__LUkPu {\n        padding: 0 2rem 0 25px; } }\n  .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC {\n    background-color: black !important;\n    color: #fff;\n    margin-bottom: 0;\n    height: 100vh; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoTitle__1dfVu {\n      color: #fff;\n      font-weight: 700;\n      font-size: 1.5rem; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC p {\n      color: white;\n      margin-bottom: 1rem; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC ul li {\n      color: white !important; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6 {\n      display: flex;\n      width: 150px;\n      justify-content: center;\n      align-items: center;\n      position: relative;\n      cursor: pointer; }\n      .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6 a {\n        z-index: 100;\n        font-size: 1.2rem;\n        font-weight: 500; }\n      .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6 svg {\n        z-index: 100;\n        padding-left: 0.5rem;\n        font-size: 1.5rem;\n        color: #fff; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLinkHover__Sv7Ae {\n      background-color: #ffb81c;\n      position: absolute;\n      top: 0;\n      left: 0;\n      height: 100%;\n      transition: all 0.3s ease-out;\n      width: 0.5rem; }\n    .Login-module_loginContainer__2EudT .Login-module_loginInfoSection__1exRC .Login-module_loginInfoLink__38Lu6:hover > .Login-module_loginInfoLinkHover__Sv7Ae {\n      width: 100%; }\n";
-var styles$2 = {"loginContainer":"Login-module_loginContainer__2EudT","cardLoginForm":"Login-module_cardLoginForm__1G8td","loginHeading":"Login-module_loginHeading__2ecv9","loginErrorMessage":"Login-module_loginErrorMessage__1QePR","invalidFeedback":"Login-module_invalidFeedback__Hpui0","loginHelpers":"Login-module_loginHelpers__2Dx_E","loginHelpersContainer":"Login-module_loginHelpersContainer__1FCu0","forgotLinks":"Login-module_forgotLinks__2LBVZ","loginFooter":"Login-module_loginFooter__1s1Xl","row":"Login-module_row__3BK-N","loginImage":"Login-module_loginImage__1EIfr","imageOverlay":"Login-module_imageOverlay__LUkPu","loginInfoSection":"Login-module_loginInfoSection__1exRC","loginInfoTitle":"Login-module_loginInfoTitle__1dfVu","loginInfoLink":"Login-module_loginInfoLink__38Lu6","loginInfoLinkHover":"Login-module_loginInfoLinkHover__Sv7Ae"};
-styleInject(css_248z$2);
-
-var LoginForm$1 = function (props) {
-    var schema = yup.object().shape({
-        username: yup.string().trim().required("Username is required"),
-        password: yup.string().trim().required("Password is required"),
-    });
-    var formik = useFormik({
-        initialValues: {
-            username: "",
-            password: "",
-        },
-        validationSchema: schema,
-        onSubmit: props.handleSubmit,
-        enableReinitialize: true,
-    });
-    return (React.createElement(React.Fragment, null,
-        React.createElement(Form, { as: Col, xs: 10, sm: 8, md: 6, lg: 7, onKeyDown: function (e) {
-                if (e.key === "Enter") {
-                    formik.handleSubmit();
-                }
-            } },
-            React.createElement(Card, { className: styles$2.cardLoginForm },
-                React.createElement(Card.Header, null,
-                    React.createElement(Card.Title, { className: styles$2.loginHeading }, "Welcome")),
-                React.createElement(Card.Body, null,
-                    props.error && (React.createElement("div", { className: styles$2.loginErrorMessage },
-                        props.error.message,
-                        " ")),
-                    React.createElement(Form.Group, { className: "mb-3" },
-                        React.createElement(Form.Label, null, "USERNAME"),
-                        React.createElement(FormControl, { name: "username", isInvalid: formik.touched.username && !!formik.errors.username, value: formik.values.username, onChange: formik.handleChange, type: "text", placeholder: "USERNAME" }),
-                        React.createElement(Form.Control.Feedback, { type: "invalid", className: styles$2.invalidFeedback }, formik.errors.username)),
-                    React.createElement(Form.Group, { className: "mb-3" },
-                        React.createElement(PasswordInput, { label: "PASSWORD", placeholder: "PASSWORD", isInvalid: formik.touched.password && !!formik.errors.password, error: formik.errors.password, onChange: formik.handleChange, value: formik.values.password, name: "password" })),
-                    React.createElement(Row, { className: styles$2.loginHelpers },
-                        React.createElement(Col, { className: styles$2.loginHelpersContainer },
-                            React.createElement("div", { className: styles$2.forgotLinks, onClick: function () { return props.setShowModal("password"); } },
-                                React.createElement("span", { className: "pr-2" }, "Forgot Password"),
-                                React.createElement(FontAwesomeIcon, { icon: faGreaterThan, size: "xs" })),
-                            React.createElement("div", { className: styles$2.forgotLinks, onClick: function () { return props.setShowModal("username"); } },
-                                React.createElement("span", { className: "pr-2" }, "Forgot Username"),
-                                React.createElement(FontAwesomeIcon, { icon: faGreaterThan, size: "xs" }))),
-                        React.createElement(Col, { className: "d-flex justify-content-sm-end justify-content-center px-0 align-items-center" },
-                            React.createElement(LoadingButton, { className: styles$2.loginBtn, color: "primary", isLoading: props.loading, defaultText: "Log in", loadingText: "Loading", onClick: function () { return formik.handleSubmit(); } }))))))));
-};
-
-var LoginImage$1 = function (props) {
-    return (React.createElement(React.Fragment, null,
-        React.createElement("div", { className: styles$2.loginInfoSection },
-            React.createElement("img", { alt: "login-image", className: styles$2.loginImage, src: props.imgUrl }),
-            React.createElement("div", { className: styles$2.imageOverlay },
-                React.createElement("h2", { className: styles$2.loginInfoTitle }, props.header),
-                props.text && React.createElement("p", null, props.text),
-                props.children))));
-};
-
-var Login$1 = function (props) {
-    return (React.createElement("div", { className: "content h-100" },
-        React.createElement(Row, { className: styles$2.loginContainer },
-            React.createElement(Col, { xs: 12, lg: 7, className: "h-100 p-0" },
-                React.createElement(Container, { fluid: true, className: "d-flex align-items-center justify-content-center h-100" },
-                    React.createElement(LoginForm$1, { loading: props.loading, handleSubmit: props.handleSubmit, error: props.error, setShowModal: props.setShowModal }))),
-            React.createElement(Col, { xs: 12, lg: 5, className: "h-100 px-0" },
-                React.createElement(LoginImage$1, { imgUrl: "https://cdn.orrprotection.com/netsite/login2.jpg", header: "WHAT IS NETSITE?", text: "NetSITE provides secure, online access to all critical information\r\n          related to any fire protection system at any facility or site\r\n          serviced by ORR" },
-                    React.createElement("h2", { className: styles$2.loginInfoTitle }, "All Documentation Online..."),
-                    React.createElement("p", null, "for all fire protection systems, located in any facility across the country"),
-                    React.createElement("ul", null,
-                        React.createElement("li", null, "Inspections Report"),
-                        React.createElement("li", null, "Proposals/ Pricing"),
-                        React.createElement("li", null, "Invoices"),
-                        React.createElement("li", null, "System Drawings"),
-                        React.createElement("li", null, "Owner Manual's")),
-                    React.createElement("div", { className: styles$2.loginInfoLink },
-                        React.createElement("div", { className: styles$2.loginInfoLinkHover }),
-                        React.createElement("a", { href: process.env.REACT_APP_ORR_NETREPORT_URL }, "Learn more"),
-                        React.createElement(FontAwesomeIcon, { icon: faArrowRight })))))));
-};
+import { useFormik } from 'formik';
 
 var big = "20rem";
 var med = "10rem";
@@ -501,7 +393,7 @@ var ButtonLoadingSpinner = function (props) {
 
 var ModalNoHeaderOverlay = function (props) {
     return (React.createElement(React.Fragment, null,
-        React.createElement(Modal, { className: "modal-no-header", onHide: props.setShow, animation: false, size: props.size ? props.size : "lg", show: props.show, centered: true },
+        React.createElement(Modal, { className: "modal-no-header", animation: false, size: props.size ? props.size : "lg", show: props.show, centered: true },
             React.createElement(CloseButton, { onClick: function () { return props.setShow(""); } }),
             React.createElement(Modal.Body, { className: "modal-body" }, props.children))));
 };
@@ -563,7 +455,7 @@ var Tabs = function (_a) {
     var orderedTabs = useMemo(function () { return OrderBy(tabs, "order"); }, [tabs]);
     var search = window.location.search;
     var searchParams = useMemo(function () { return new URLSearchParams(search); }, [search]);
-    var uniqueSearchKey = useMemo(function () { return uniqueKey + "-" + TAB_SEARCH_KEY; }, [uniqueKey]);
+    var uniqueSearchKey = useMemo(function () { return "".concat(uniqueKey, "-").concat(TAB_SEARCH_KEY); }, [uniqueKey]);
     var urlKey = useMemo(function () {
         var searchKey = searchParams.get(uniqueSearchKey);
         return searchKey || orderedTabs[0].key;
@@ -739,6 +631,33 @@ var Authentication = function (props) {
     }
 };
 
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
 var css_248z$1 = ".Login-module_loginContainer__ovFhO {\n  background-color: #fff;\n  height: 100vh;\n  margin: 0 !important; }\n  .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN {\n    box-shadow: none !important;\n    background-color: #fff; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginErrorMessage__1hZrs {\n      color: red;\n      font-size: 1rem;\n      text-align: center;\n      position: absolute;\n      top: 2.8rem;\n      width: 100%; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_invalidFeedback__1_xPc {\n      font-size: 0.8rem;\n      margin-top: 0.1rem;\n      margin-bottom: -0.8rem; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginInput__obfve {\n      border-color: rgba(34, 42, 66, 0.2) !important; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN input[name=\"password\"] {\n      border-color: rgba(34, 42, 66, 0.2) !important; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHelpers__1vXiR {\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n      margin: auto 0 !important; }\n      .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHelpers__1vXiR .Login-module_loginHelpersContainer__2bpKL {\n        display: flex;\n        justify-content: center;\n        flex-direction: column;\n        flex-basis: 0; }\n        @media (max-width: 575.98px) {\n          .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHelpers__1vXiR .Login-module_loginHelpersContainer__2bpKL {\n            flex-basis: inherit;\n            margin-bottom: 0.9rem; } }\n      .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHelpers__1vXiR button {\n        min-width: 160px; }\n        @media (min-width: 1440px) {\n          .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHelpers__1vXiR button {\n            min-width: 220px; } }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHeading__1HKkI {\n      font-size: x-large;\n      text-align: center;\n      font-weight: 700 !important;\n      color: #000 !important; }\n      .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginHeading__1HKkI span {\n        font-size: medium;\n        font-weight: 500; }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_forgotLinks__9HJ1I {\n      cursor: pointer;\n      color: #00c389;\n      font-size: 0.8rem;\n      display: flex;\n      justify-content: flex-start;\n      align-items: center; }\n      @media (max-width: 575.98px) {\n        .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_forgotLinks__9HJ1I {\n          justify-content: center; } }\n    .Login-module_loginContainer__ovFhO .Login-module_cardLoginForm__1RNQN .Login-module_loginFooter__1NiI- .Login-module_row__3zplp {\n      margin: 0; }\n  .Login-module_loginContainer__ovFhO .Login-module_loginImage__1_7s6 {\n    height: 100%;\n    object-fit: cover;\n    max-width: 100%;\n    opacity: 0.2; }\n  .Login-module_loginContainer__ovFhO .Login-module_imageOverlay__1eAiO {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    padding: 0 10rem 0 25px; }\n  .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 {\n    background-color: black !important;\n    color: #fff;\n    margin-bottom: 0;\n    height: 100vh; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoTitle__2WFTa {\n      color: #fff;\n      font-weight: 700;\n      font-size: 1.5rem; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 p {\n      color: white;\n      margin-bottom: 1rem; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 ul li {\n      color: white !important; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLink__1ASEM {\n      display: flex;\n      width: 150px;\n      justify-content: center;\n      align-items: center;\n      position: relative;\n      cursor: pointer; }\n      .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLink__1ASEM a {\n        z-index: 100;\n        font-size: 1.2rem;\n        font-weight: 500; }\n      .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLink__1ASEM a:hover {\n        color: #fff; }\n      .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLink__1ASEM svg {\n        z-index: 100;\n        padding-left: 0.5rem;\n        font-size: 1.5rem;\n        color: #fff; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLinkHover__3JuBp {\n      background-color: #ffb81c;\n      position: absolute;\n      top: 0;\n      left: 0;\n      height: 100%;\n      transition: all 0.3s ease-out;\n      width: 0.5rem; }\n    .Login-module_loginContainer__ovFhO .Login-module_loginInfoSection__2vkC8 .Login-module_loginInfoLink__1ASEM:hover > .Login-module_loginInfoLinkHover__3JuBp {\n      width: 100%; }\n\n.Login-module_loginButton__7GV6C {\n  background-color: white;\n  color: rgba(0, 0, 0, 0.54);\n  padding-right: 5px;\n  border-radius: 2px;\n  border: 1px solid transparent;\n  font-size: 14px;\n  font-weight: 500;\n  font-family: Roboto, sans-serif;\n  height: 50px;\n  box-shadow: #cac6c6 0px 2px 2px 0px, #cac6c6 0px 0px 1px 0px; }\n\n.Login-module_imgSize__tE5Wg {\n  width: 20px;\n  margin-right: 5px; }\n";
 var styles$1 = {"loginContainer":"Login-module_loginContainer__ovFhO","cardLoginForm":"Login-module_cardLoginForm__1RNQN","loginErrorMessage":"Login-module_loginErrorMessage__1hZrs","invalidFeedback":"Login-module_invalidFeedback__1_xPc","loginInput":"Login-module_loginInput__obfve","loginHelpers":"Login-module_loginHelpers__1vXiR","loginHelpersContainer":"Login-module_loginHelpersContainer__2bpKL","loginHeading":"Login-module_loginHeading__1HKkI","forgotLinks":"Login-module_forgotLinks__9HJ1I","loginFooter":"Login-module_loginFooter__1NiI-","row":"Login-module_row__3zplp","loginImage":"Login-module_loginImage__1_7s6","imageOverlay":"Login-module_imageOverlay__1eAiO","loginInfoSection":"Login-module_loginInfoSection__2vkC8","loginInfoTitle":"Login-module_loginInfoTitle__2WFTa","loginInfoLink":"Login-module_loginInfoLink__1ASEM","loginInfoLinkHover":"Login-module_loginInfoLinkHover__3JuBp","loginButton":"Login-module_loginButton__7GV6C","imgSize":"Login-module_imgSize__tE5Wg"};
 styleInject(css_248z$1);
@@ -867,7 +786,7 @@ var ModalLogin = function (_a) {
         React.createElement("h3", { className: "mt-3 mb-1 font-weight-bold" }, modal === "Username" ? "Retrieve User Name" : "Reset Password"),
         React.createElement("p", { className: "text-muted text-center mb-3" }, text),
         React.createElement(Form.Label, { className: "align-self-start" }, modal === "Username" ? "Email Address" : "User Name"),
-        React.createElement(Form.Control, { className: "mb-2 text-muted", type: "text", id: "loginInput" + modal, value: value, onChange: function (e) { return setValue(e.target.value); }, placeholder: modal === "Username" ? "Email Address" : "User Name" }),
+        React.createElement(Form.Control, { className: "mb-2 text-muted", type: "text", id: "loginInput".concat(modal), value: value, onChange: function (e) { return setValue(e.target.value); }, placeholder: modal === "Username" ? "Email Address" : "User Name" }),
         status && status !== "Success" ? errorMessage() : null,
         React.createElement("div", { className: "my-2 px-2 d-flex justify-content-around flex-column flex-sm-row w-sm-100" },
             React.createElement(Button, { className: "mb-2 mb-sm-0 text-muted", variant: "white", onClick: onClick }, "Cancel"),
@@ -899,7 +818,7 @@ var Login = function (_a) {
                     React.createElement(Container, { fluid: true, className: "d-flex align-items-center justify-content-center h-100" },
                         React.createElement(LoginForm, { loading: loading, error: error, signIn: signIn, isAutoLogin: isAutoLogin, setShowModal: setShowModal, logo: logo }))),
                 React.createElement(Col, { xs: 12, lg: 5, className: "h-100 px-0" },
-                    React.createElement(LoginImage, { header: "Lorem ipsum ?", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\n            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\n            numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium", imgUrl: process.env.REACT_APP_CDN_URL + "/netsite/login2.jpg" },
+                    React.createElement(LoginImage, { header: "Lorem ipsum ?", text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\r\n            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\r\n            numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium", imgUrl: "".concat(process.env.REACT_APP_CDN_URL, "/netsite/login2.jpg") },
                         React.createElement("h2", { className: styles$1.loginInfoTitle }, "Lorem ipsum Online..."),
                         React.createElement("p", null,
                             " ",
@@ -963,4 +882,4 @@ var Unauthorized = function (props) {
                             React.createElement(Button, { variant: "primary", className: "unauthorizedBtn", size: "lg", onClick: handleBack }, "Back home"))))))));
 };
 
-export { AlertWrapped, AuthenticationProvider, AuthorizationRoles, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, Dropdowns, ForgotPasswordModal, ForgotUsernameModal, GetToday, IsPhoneProvider, LoadingButton, Login$1 as Login, LoginForm, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, Tabs, Unauthorized, checkValuesData, extract, getDate, getPropertyName, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useLocalStorage, useOnce };
+export { AlertWrapped, AuthenticationProvider, AuthorizationRoles, BackButton, ButtonLoadingSpinner, ButtonSpinner, CenteredSpinner, Dropdowns, ForgotPasswordModal, ForgotUsernameModal, GetToday, IsPhoneProvider, LoadingButton, LoginForm, ModalNoHeaderOverlay, ModalOverlay, ModalSuccess, NativeOverlay, NumberBoolToText, NumberOrDefault, OrderBy, PasswordInput, SimpleCard, StringOrDefault, StringToShortDate, Tabs, Unauthorized, checkValuesData, extract, getDate, getPropertyName, getUniqueBy, groupBy, isNotNull, nameOf, notEmpty, useIsPhoneContext, useLocalStorage, useOnce };
